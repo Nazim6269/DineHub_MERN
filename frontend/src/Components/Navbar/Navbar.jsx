@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="container mx-auto flex flex-wrap p-4 flex-col md:flex-row items-center">
           <div>
             <a className="flex title-font font-medium items-center md:mb-0 ">
-              <div className="ml-3 text-3xl italic">Dreams Food</div>
+              <div className="ml-3 text-3xl italic">DineHub</div>
             </a>
           </div>
           <h3 className="ml-4">Category</h3>
