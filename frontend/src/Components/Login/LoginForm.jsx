@@ -1,7 +1,6 @@
 import { GoogleLogin, GoogleOAuthProvider } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import React, { useState } from "react";
-import { Card, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { setAccessTokenCookie } from "../../helpers/setAccessToken";
 import { profileInLocalStorage } from "../../helpers/setLocalStorage";
 import { setProfileInfo } from "../../redux/actions/actionsCreator";
+
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
 const LoginForm = () => {
@@ -90,57 +90,67 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="p-20">
-      <Card className="w-5/12 p-3 border-none shadow-md  mx-auto">
-        <h2 className="mx-auto mb-4 text-pink-600 font-bold text-3xl">Login</h2>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-16">
+      <div className="w-full max-w-xl rounded-xl bg-white p-8 shadow-md">
+        <h2 className="text-center text-3xl font-bold text-pink-600 mb-6">
+          Login
+        </h2>
 
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-gray-700">
+              Email address
+            </label>
+            <input
               type="email"
               value={value.email}
               onChange={(e) => handleChange({ email: e.target.value })}
               placeholder="name@example.com"
+              className="w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-900 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-200"
+              required
             />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
+          </div>
+
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-gray-700">
+              Password
+            </label>
+            <input
               type="password"
               value={value.password}
               onChange={(e) => handleChange({ password: e.target.value })}
               placeholder="Enter your password"
+              className="w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-900 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-200"
+              required
             />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <button
-              className="btn border-none text-white font-semibold bg-pink-600 hover:bg-pink-500 w-full text-center"
-              type="submit"
-            >
-              Login
-            </button>
+          </div>
 
-            <ToastContainer position="top-center" autoClose={4000} />
-            <div className="text-center my-3 font-semibold underline text-pink-600 ">
-              <Link to="/forget-password">Forget Password?</Link>
-            </div>
-            <button
-              className="btn mb-3 border-none text-white font-semibold bg-pink-600 hover:bg-pink-500 w-full text-center"
-              type="submit"
-            >
-              <Link to="/signup">Create new account</Link>
-            </button>
+          <button
+            className="w-full rounded-lg bg-pink-600 px-4 py-2 text-white font-semibold shadow-sm transition hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-200"
+            type="submit"
+          >
+            Login
+          </button>
 
-            <GoogleOAuthProvider clientId={clientId}>
-              <GoogleLogin
-                onSuccess={handleGoogleSuccess}
-                onError={handleGoogleError}
-              />
-            </GoogleOAuthProvider>
-          </Form.Group>
-        </Form>
-      </Card>
+          <div className="text-center font-semibold underline text-pink-600">
+            <Link to="/forget-password">Forget Password?</Link>
+          </div>
+
+          <Link
+            to="/signup"
+            className="inline-block w-full rounded-lg bg-pink-600 px-4 py-2 text-center text-white font-semibold shadow-sm transition hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-200"
+          >
+            Create new account
+          </Link>
+        </form>
+
+        <div className="mt-6 flex justify-center">
+          <GoogleOAuthProvider clientId={clientId}>
+            <GoogleLogin onSuccess={handleGoogleSuccess} onError={handleGoogleError} />
+          </GoogleOAuthProvider>
+        </div>
+      </div>
+      <ToastContainer position="top-center" autoClose={4000} />
     </div>
   );
 };

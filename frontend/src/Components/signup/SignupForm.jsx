@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Card, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -55,59 +54,74 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="p-20">
-      <Card className="w-5/12  border-none shadow-sm p-3 mx-auto ">
-        <h2 className="mx-auto mb-4 font-bold text-pink-600 text-3xl">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-16">
+      <div className="w-full max-w-xl rounded-xl bg-white p-8 shadow-md">
+        <h2 className="text-center text-3xl font-bold text-pink-600 mb-6">
           Signup
         </h2>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group className="mb-3">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="name"
+
+        <form className="space-y-4" onSubmit={handleSubmit}>
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-gray-700">
+              Name
+            </label>
+            <input
+              type="text"
               name="name"
               value={value.name}
               onChange={(e) => updateForm({ name: e.target.value })}
               placeholder="Enter your name"
+              className="w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-900 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-200"
+              required
             />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
+          </div>
+
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-gray-700">
+              Email address
+            </label>
+            <input
               type="email"
               name="email"
               value={value.email}
-              placeholder="name@example.com"
               onChange={(e) => updateForm({ email: e.target.value })}
+              placeholder="name@example.com"
+              className="w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-900 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-200"
+              required
             />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
+          </div>
+
+          <div className="space-y-2">
+            <label className="block text-sm font-semibold text-gray-700">
+              Password
+            </label>
+            <input
               type="password"
               name="password"
               value={value.password}
-              placeholder="Enter your password"
               onChange={(e) => updateForm({ password: e.target.value })}
+              placeholder="Enter your password"
+              className="w-full rounded-lg border border-gray-200 px-3 py-2 text-gray-900 focus:border-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-200"
+              required
             />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <button
-              className="btn font-semibold mb-2 w-full text-white bg-pink-600 hover:bg-pink-500"
-              type="submit"
-            >
-              Sign up
-            </button>
-            <ToastContainer position="top-center" autoClose={4000} />
-            <button
-              className="btn w-full font-semibold text-white bg-pink-600 hover:bg-pink-500"
-              type="submit"
-            >
-              <Link to="/login">Login</Link>
-            </button>
-          </Form.Group>
-        </Form>
-      </Card>
+          </div>
+
+          <button
+            className="w-full rounded-lg bg-pink-600 px-4 py-2 text-white font-semibold shadow-sm transition hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-200"
+            type="submit"
+          >
+            Sign up
+          </button>
+
+          <Link
+            to="/login"
+            className="inline-block w-full rounded-lg bg-pink-600 px-4 py-2 text-center text-white font-semibold shadow-sm transition hover:bg-pink-500 focus:outline-none focus:ring-2 focus:ring-pink-200"
+          >
+            Login
+          </Link>
+        </form>
+      </div>
+      <ToastContainer position="top-center" autoClose={4000} />
     </div>
   );
 };

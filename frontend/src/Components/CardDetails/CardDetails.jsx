@@ -50,47 +50,47 @@ const CardDetails = () => {
           let { _id, img, description, name, CategoryName } = item;
           const { full } = item.options[0];
           return (
-            <div key={_id} className="container px-5 py-24 mx-auto">
-              <div className="lg:w-4/5 mx-auto flex flex-wrap">
+            <div key={_id} className="container px-4 sm:px-6 lg:px-8 py-12 mx-auto">
+              <div className="lg:w-4/5 mx-auto flex flex-col lg:flex-row gap-8">
                 <img
                   alt="ecommerce"
-                  className="lg:w-1/2 w-full  h-64 object-cover object-center rounded"
+                  className="lg:w-1/2 w-full h-64 sm:h-80 object-cover object-center rounded"
                   src={img}
                 />
-                <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                <div className="lg:w-1/2 w-full lg:pl-6 lg:py-2">
                   <h2 className="text-md font-semibold title-font text-black tracking-widest">
                     {name}
                   </h2>
-                  <h1 className="text-black text-3xl title-font font-medium mb-1">
+                  <h1 className="text-black text-2xl sm:text-3xl title-font font-medium mb-4">
                     {CategoryName}
                   </h1>
 
-                  <p className="leading-relaxed">{description}</p>
+                  <p className="leading-relaxed mb-6">{description}</p>
 
-                  <div className="flex">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                     <span className="title-font font-medium text-2xl">
                       Price: ${full}
                     </span>
-                    <Link
-                      to={"/"}
-                      className="flex mx-auto text-white bg-pink-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-                    >
-                      Go to home
-                    </Link>
-
-                    <button
-                      onClick={() => handleCart(item)}
-                      className="flex ml-auto text-white bg-pink-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-                    >
-                      Add to cart
-                    </button>
-
-                    <Link
-                      to={"/cart"}
-                      className="flex mx-auto text-white  bg-pink-600 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-                    >
-                      Go to cart
-                    </Link>
+                    <div className="flex flex-wrap gap-3 sm:ml-auto">
+                      <Link
+                        to={"/"}
+                        className="inline-flex text-white bg-pink-600 border-0 py-2 px-5 rounded hover:bg-pink-500 transition"
+                      >
+                        Go to home
+                      </Link>
+                      <button
+                        onClick={() => handleCart(item)}
+                        className="inline-flex text-white bg-pink-600 border-0 py-2 px-5 rounded hover:bg-pink-500 transition"
+                      >
+                        Add to cart
+                      </button>
+                      <Link
+                        to={"/cart"}
+                        className="inline-flex text-white bg-pink-600 border-0 py-2 px-5 rounded hover:bg-pink-500 transition"
+                      >
+                        Go to cart
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -99,16 +99,16 @@ const CardDetails = () => {
         })}
       </section>
       {/* question review */}
-      <div className="flex items-center">
-        <div className=" flex flex-col">
+      <div className="flex flex-col lg:flex-row gap-4 px-4 sm:px-6 lg:px-8 pb-12">
+        <div className="flex-1 flex flex-col gap-4">
           <Question />
           <Review />
         </div>
-        <div className="flex flex-col">
-          <div className=" bg-gray-300 rounded mb-3 px-4 py-2">
+        <div className="w-full lg:w-1/3 flex flex-col gap-4">
+          <div className="bg-gray-100 rounded px-4 py-3 shadow-sm">
             <RelatedItem />
           </div>
-          <div className="bg-gray-300 rounded  px-4 py-2">
+          <div className="bg-gray-100 rounded px-4 py-3 shadow-sm">
             <RecentView />
           </div>
         </div>
