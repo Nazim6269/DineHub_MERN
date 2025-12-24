@@ -264,7 +264,7 @@ frontend/
 
 Deployed on Vercel for live demo.
 
-🔗 Live Demo: [https://project02-dine-hub-mern-aqcz-87c2eo8de-nazims-projects-a0d00723.vercel.app/](https://project02-dine-hub-mern-aqcz-87c2eo8de-nazims-projects-a0d00723.vercel.app/)
+🔗 Live Demo: [https://project02-dine-hub-mern-aqcz.vercel.app/](https://project02-dine-hub-mern-aqcz.vercel.app/)
 
 ## 🤝 Contributing
 
