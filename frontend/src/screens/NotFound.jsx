@@ -1,22 +1,22 @@
 const NotFound = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 px-4">
       {/* Animated 404 */}
-      <h1 className="text-8xl font-extrabold text-pink-600 animate-bounce mb-6">
+      <h1 className="text-8xl font-extrabold text-red-500 animate-bounce mb-6">
         404
       </h1>
 
       {/* Message */}
-      <p className="text-2xl text-gray-700 mb-6 text-center">
+      <p className="text-2xl text-gray-300 mb-6 text-center">
         Oops! The page you're looking for doesn't exist.
       </p>
 
       {/* Button */}
       <a
-        href="/"
-        className="px-6 py-3 bg-pink-600 text-white rounded-lg shadow hover:bg-pink-500 transition"
+        href="/admin/dashboard"
+        className="px-6 py-3 primaryBtnUi text-white rounded-lg shadow hover:primaryTextHoverColor transition"
       >
-        Go Back Home
+        Go Back to Dashboard
       </a>
 
       {/* Optional Illustration */}

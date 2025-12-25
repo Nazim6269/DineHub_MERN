@@ -96,7 +96,7 @@ const signupPostController = async (req, res) => {
       });
     }
 
-    const accessToken = createJWT({ email, password }, jwtAccessKey, "10m");
+    const accessToken = createJWT({ email, password }, jwtAccessKey, "100m");
 
     successResponse(res, {
       statusCode: 201,
