@@ -5,6 +5,8 @@ import { User } from "./models/userModel.js";
 const dummyFoodItems = [
   // Starters
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Starter",
     name: "Paneer 65",
     img: "https://media.istockphoto.com/photos/paneer-tikka-kabab-in-red-sauce-is-an-indian-dish-made-from-chunks-of-picture-id1257507446?b=1&k=20&m=1257507446&s=170667a&w=0&h=Nd7QsslbvPqOcvwu1bY0rEPZXJqwoKTYCal3nty4X-Y=",
@@ -13,6 +15,8 @@ const dummyFoodItems = [
       "Made using Indian masalas and Basmati rice. Barbequed pieces of Paneer were added.",
   },
   {
+    stock: 2,
+    status: "out of stock",
     CategoryName: "Starter",
     name: "Chicken 65",
     img: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=500",
@@ -21,6 +25,8 @@ const dummyFoodItems = [
       "Spicy, deep-fried chicken dish originating from South India. Perfectly crispy and flavorful.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Starter",
     name: "Gobi Manchurian",
     img: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=500",
@@ -29,6 +35,8 @@ const dummyFoodItems = [
       "Indo-Chinese appetizer made with cauliflower florets in a spicy, tangy sauce.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Starter",
     name: "Veg Spring Rolls",
     img: "https://images.unsplash.com/photo-1593967858037-f4b747f12bcd?w=500",
@@ -37,6 +45,8 @@ const dummyFoodItems = [
       "Crispy rolls filled with fresh vegetables and served with sweet chili sauce.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Starter",
     name: "Fish Fingers",
     img: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=500",
@@ -47,6 +57,8 @@ const dummyFoodItems = [
 
   // Main Course - Biryani
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Biryani",
     name: "Chicken Biryani",
     img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500",
@@ -55,6 +67,8 @@ const dummyFoodItems = [
       "Aromatic basmati rice cooked with marinated chicken and exotic spices.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Biryani",
     name: "Mutton Biryani",
     img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500",
@@ -63,6 +77,8 @@ const dummyFoodItems = [
       "Premium mutton pieces slow-cooked with fragrant rice and traditional spices.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Biryani",
     name: "Veg Biryani",
     img: "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500",
@@ -71,6 +87,8 @@ const dummyFoodItems = [
       "Mixed vegetables cooked with aromatic basmati rice and flavorful spices.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Biryani",
     name: "Egg Biryani",
     img: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=500",
@@ -79,6 +97,8 @@ const dummyFoodItems = [
       "Boiled eggs layered with spiced rice and herbs for a delightful meal.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Biryani",
     name: "Prawns Biryani",
     img: "https://images.unsplash.com/photo-1633945274309-c440f8c5d1c0?w=500",
@@ -89,6 +109,8 @@ const dummyFoodItems = [
 
   // Curries
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Curry",
     name: "Butter Chicken",
     img: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=500",
@@ -97,6 +119,8 @@ const dummyFoodItems = [
       "Tender chicken in a rich, creamy tomato-based gravy with butter and spices.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Curry",
     name: "Paneer Butter Masala",
     img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500",
@@ -104,6 +128,8 @@ const dummyFoodItems = [
     description: "Soft paneer cubes in a creamy tomato and cashew-based gravy.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Curry",
     name: "Dal Makhani",
     img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=500",
@@ -112,6 +138,8 @@ const dummyFoodItems = [
       "Black lentils slow-cooked with butter, cream, and aromatic spices.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Curry",
     name: "Kadai Paneer",
     img: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500",
@@ -120,6 +148,8 @@ const dummyFoodItems = [
       "Paneer cooked with bell peppers, onions, and tomatoes in a spicy gravy.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Curry",
     name: "Fish Curry",
     img: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=500",
@@ -130,6 +160,8 @@ const dummyFoodItems = [
 
   // Breads
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Breads",
     name: "Butter Naan",
     img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500",
@@ -137,6 +169,8 @@ const dummyFoodItems = [
     description: "Soft, fluffy Indian bread brushed with butter.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Breads",
     name: "Garlic Naan",
     img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500",
@@ -144,6 +178,8 @@ const dummyFoodItems = [
     description: "Naan topped with fresh garlic and herbs.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Breads",
     name: "Tandoori Roti",
     img: "https://images.unsplash.com/photo-1617343267481-5c707f38b5b8?w=500",
@@ -151,6 +187,8 @@ const dummyFoodItems = [
     description: "Whole wheat flatbread cooked in a tandoor.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Breads",
     name: "Cheese Naan",
     img: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=500",
@@ -160,6 +198,8 @@ const dummyFoodItems = [
 
   // Chinese
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Chinese",
     name: "Veg Fried Rice",
     img: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500",
@@ -167,6 +207,8 @@ const dummyFoodItems = [
     description: "Stir-fried rice with mixed vegetables and soy sauce.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Chinese",
     name: "Chicken Fried Rice",
     img: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=500",
@@ -174,6 +216,8 @@ const dummyFoodItems = [
     description: "Fried rice tossed with chicken pieces and vegetables.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Chinese",
     name: "Hakka Noodles",
     img: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=500",
@@ -181,6 +225,8 @@ const dummyFoodItems = [
     description: "Stir-fried noodles with vegetables in Indo-Chinese style.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Chinese",
     name: "Chilli Chicken",
     img: "https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?w=500",
@@ -191,6 +237,8 @@ const dummyFoodItems = [
 
   // Desserts
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Dessert",
     name: "Gulab Jamun",
     img: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=500",
@@ -199,6 +247,8 @@ const dummyFoodItems = [
       "Soft, sweet dumplings soaked in sugar syrup. 2 pieces per serving.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Dessert",
     name: "Rasmalai",
     img: "https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=500",
@@ -207,6 +257,8 @@ const dummyFoodItems = [
       "Soft cottage cheese patties in sweet, creamy milk. 2 pieces per serving.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Dessert",
     name: "Ice Cream",
     img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500",
@@ -214,6 +266,8 @@ const dummyFoodItems = [
     description: "Choice of vanilla, chocolate, or strawberry. Single scoop.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Dessert",
     name: "Kulfi",
     img: "https://images.unsplash.com/photo-1560008581-09826d1de69e?w=500",
@@ -223,6 +277,8 @@ const dummyFoodItems = [
 
   // Beverages
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Beverage",
     name: "Mango Lassi",
     img: "https://images.unsplash.com/photo-1561570834-45d5f14e0112?w=500",
@@ -230,6 +286,8 @@ const dummyFoodItems = [
     description: "Refreshing yogurt-based drink with sweet mango pulp.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Beverage",
     name: "Masala Chai",
     img: "https://images.unsplash.com/photo-1597318493939-b#8b9c2f2f3?w=500",
@@ -237,6 +295,8 @@ const dummyFoodItems = [
     description: "Traditional Indian tea with aromatic spices and milk.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Beverage",
     name: "Fresh Lime Soda",
     img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=500",
@@ -244,6 +304,8 @@ const dummyFoodItems = [
     description: "Fizzy drink with fresh lime juice. Choose sweet or salt.",
   },
   {
+    stock: 2,
+    status: "available",
     CategoryName: "Beverage",
     name: "Cold Coffee",
     img: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500",
@@ -378,6 +440,9 @@ const generateOrders = (foodItems, users) => {
       orderItems.push({
         foodItemId: randomFood._id,
         name: randomFood.name,
+        stock: 2,
+
+        status: "available",
         category: randomFood.CategoryName,
         size: size,
         quantity: quantity,
@@ -412,6 +477,10 @@ const generateOrders = (foodItems, users) => {
 
 export const seedDatabase = async () => {
   try {
+    await foodItemModel.deleteMany({});
+    await orderModel.deleteMany({});
+    await User.deleteMany({});
+
     const insertedFoodItems = await foodItemModel.insertMany(dummyFoodItems);
     const insertedUsers = await User.insertMany(dummyUsers);
     const orders = generateOrders(insertedFoodItems, insertedUsers);

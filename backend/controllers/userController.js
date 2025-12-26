@@ -13,7 +13,7 @@ import { jwtAccessKey, jwtSecretKey } from "../secret.js";
 const signupGetController = (req, res) => {
   res.send("hi");
 };
-//google login controller
+//====================google login controller=================//
 const googleLoginController = async (req, res, next) => {
   const { name, email, googleId, picture } = req.body;
   const accessToken = createJWT({ email, googleId }, jwtAccessKey, "10m");
@@ -53,7 +53,8 @@ const googleLoginController = async (req, res, next) => {
     next(createError(error));
   }
 };
-//logout controller
+
+//==============logout controller===============//
 const logoutController = async (req, res, next) => {
   const { email } = req.body;
   const response = await User.findOneAndDelete(email);
@@ -67,7 +68,7 @@ const logoutController = async (req, res, next) => {
   }
 };
 
-//signup POST controller
+//===================signup POST controller=================//
 const signupPostController = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -110,7 +111,7 @@ const signupPostController = async (req, res) => {
   }
 };
 
-//login POST controller
+//=====================login POST controller==================//
 const loginPostController = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -132,7 +133,7 @@ const loginPostController = async (req, res, next) => {
     }
 
     //createToken
-    const accessToken = createJWT({ email, password }, jwtAccessKey, "10m");
+    const accessToken = createJWT({ email, password }, jwtAccessKey, "100m");
 
     // setAccessTokenCookie(res, accessToken);
 

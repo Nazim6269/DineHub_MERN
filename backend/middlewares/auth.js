@@ -15,7 +15,6 @@ const protect = async (req, res, next) => {
       });
     }
 
-    console.log("token");
     const decoded = jwt.verify(token, jwtAccessKey);
     const currentUser = await User.findOne({ email: decoded.email }); //TODO: find by token
 

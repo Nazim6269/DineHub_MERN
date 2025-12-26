@@ -34,7 +34,7 @@ userRouter.post("/reset-password", resetPassController);
 userRouter.get(
   "/admin/dashboard",
   protect,
-  authorize("user"),
+  authorize("admin"),
   adminDashboardController
 );
 export { userRouter };
