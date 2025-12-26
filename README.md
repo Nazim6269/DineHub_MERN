@@ -141,7 +141,7 @@ backend/
 │  ├─ emailWithNodemailer.js
 │  └─ responseHandler.js
 ├─ models/
-│  └─ signupModel.js
+│  └─ userModel.js
 ├─ routes/
 │  └─ userRouter.js
 ├─ validators/

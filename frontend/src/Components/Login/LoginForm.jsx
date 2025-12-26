@@ -55,7 +55,7 @@ const LoginForm = () => {
 
       dispatch(setProfileInfo(createUser));
       profileInLocalStorage(createUser);
-      setAccessTokenCookie("accessToken", userData.payload, 30);
+      setAccessTokenCookie("accessToken", userData.payload, 300);
       navigate("/");
     } catch (error) {
       console.error(error);

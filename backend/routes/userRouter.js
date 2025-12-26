@@ -10,6 +10,8 @@ import {
   signupPostController,
 } from "../controllers/userController.js";
 
+import { adminDashboardController } from "../controllers/adminController.js";
+import { authorize, protect } from "../middlewares/auth.js";
 import { loginValidator, signupValidator } from "../validators/condition.js";
 import { runValidation } from "../validators/validation.js";
 
@@ -29,5 +31,10 @@ userRouter.get("/food", foodController);
 userRouter.post("/google-login", googleLoginController);
 userRouter.post("/forget-password", forgetPassController);
 userRouter.post("/reset-password", resetPassController);
-
+userRouter.get(
+  "/admin/dashboard",
+  protect,
+  authorize("user"),
+  adminDashboardController
+);
 export { userRouter };

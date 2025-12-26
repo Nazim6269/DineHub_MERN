@@ -1,4 +1,5 @@
 //external import
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import express from "express";
 import rateLimit from "express-rate-limit";
@@ -13,8 +14,12 @@ import { userRouter } from "./routes/userRouter.js";
 
 //middleware array
 const middleware = [
+  cookieParser(),
   morgan("dev"),
-  cors(),
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  }),
   rateLimit({
     windowMs: 1 * 60 * 1000,
     max: 10,

@@ -17,49 +17,54 @@ import AdminLayout from "./layout/AdminLayout";
 import MainLayout from "./layout/MainLayout";
 import store from "./redux/store";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AdminDashboard from "./Components/admin/AdminDashboard";
 import Cart from "./screens/Cart";
 import Contact from "./screens/Contact";
 import Home from "./screens/Home";
 import NotFound from "./screens/NotFound";
+// Create a client
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          {/* PUBLIC */}
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/signup" element={<SignupForm />} />
-          <Route path="/forget-password" element={<ForgetPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes>
+            {/* PUBLIC */}
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/signup" element={<SignupForm />} />
+            <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
 
-          {/* USER PRIVATE */}
-          <Route element={<PrivateRoute />}>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<Home />} />
-              <Route path="/cardDetails/:id" element={<CardDetails />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/category/:id" element={<SingleCategory />} />
+            {/* USER PRIVATE */}
+            <Route element={<PrivateRoute />}>
+              <Route element={<MainLayout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="/cardDetails/:id" element={<CardDetails />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/category/:id" element={<SingleCategory />} />
+              </Route>
             </Route>
-          </Route>
 
-          {/* ADMIN */}
-          <Route element={<AdminRoute />}>
-            <Route element={<AdminLayout />}>
-              <Route path="/admin/dashboard" element={<AdminDashboard />} />
-              <Route path="/admin/products" element={<AdminProducts />} />
-              <Route path="/admin/orders" element={<AdminOrders />} />
-              <Route path="/admin/users" element={<AdminUsers />} />
-              <Route path="/admin/categories" element={<AdminCategories />} />
-              <Route path="/admin/settings" element={<AdminSettings />} />
+            {/* ADMIN */}
+            <Route element={<AdminRoute />}>
+              <Route element={<AdminLayout />}>
+                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                <Route path="/admin/products" element={<AdminProducts />} />
+                <Route path="/admin/orders" element={<AdminOrders />} />
+                <Route path="/admin/users" element={<AdminUsers />} />
+                <Route path="/admin/categories" element={<AdminCategories />} />
+                <Route path="/admin/settings" element={<AdminSettings />} />
+              </Route>
             </Route>
-          </Route>
 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
     </Provider>
   );
 }

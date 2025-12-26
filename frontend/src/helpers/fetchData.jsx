@@ -5,7 +5,7 @@ export const fetchData = async () => {
       "Content-Type": "application/json",
     },
   });
-  console.log(res, "fetchData");
+
   const data = await res.json();
   return data;
 };

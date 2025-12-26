@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 import { createJWT } from "../helpers/createJWT.js";
 import emailWithNodemailer from "../helpers/emailWithNodemailer.js";
 import { errorResponse, successResponse } from "../helpers/responseHandler.js";
-import { User } from "../models/signupModel.js";
+import { User } from "../models/userModel.js";
 import { jwtAccessKey, jwtSecretKey } from "../secret.js";
 
 const signupGetController = (req, res) => {
@@ -71,7 +71,7 @@ const logoutController = async (req, res, next) => {
 const signupPostController = async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    console.log("3");
+
     const isExist = await User.findOne({ email });
 
     if (isExist)
@@ -81,12 +81,14 @@ const signupPostController = async (req, res) => {
       });
 
     const hasedPassword = await bcrypt.hash(password, 10);
+    const newToken = createJWT({ email, password }, jwtAccessKey, "10m");
 
     const newUser = await User.create({
       name,
       email,
       password: hasedPassword,
     });
+    newUser.tokens.push({ token: newToken });
 
     const response = await newUser.save();
     if (!response) {
@@ -128,7 +130,7 @@ const loginPostController = async (req, res, next) => {
         message: "Password did not match",
       });
     }
-    console.log(jwtAccessKey);
+
     //createToken
     const accessToken = createJWT({ email, password }, jwtAccessKey, "10m");
 
