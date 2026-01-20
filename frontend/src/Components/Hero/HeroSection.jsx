@@ -3,15 +3,15 @@ const HeroSection = () => {
     <section
       className="
         relative overflow-hidden
-        bg-background-dark
-        text-text-primary
+        bg-app-bg
+        text-text-main
       "
     >
-      {/* Simple Background */}
+      {/* Soft Background Accent */}
       <div
         className="
           pointer-events-none absolute inset-0
-          bg-background-dark/50
+          bg-surface-bg/50
         "
       />
 
@@ -23,10 +23,10 @@ const HeroSection = () => {
               className="
                 text-3xl sm:text-4xl md:text-5xl lg:text-7xl
                 font-black leading-tight
-                text-primary-cyan uppercase tracking-tighter
+                text-text-main uppercase tracking-tighter
               "
             >
-              Savor Every Flavor,
+              Savor Every <span className="text-brand-primary">Flavor</span>,
               <br />
               Accelerate Your Taste.
             </h1>
@@ -35,7 +35,7 @@ const HeroSection = () => {
               className="
                 max-w-xl mx-auto md:mx-0
                 text-base sm:text-lg
-                text-text-secondary
+                text-text-sub font-medium
               "
             >
               Welcome to a place where passion meets plate. Immerse yourself in
@@ -47,8 +47,8 @@ const HeroSection = () => {
               <button
                 className="
                   rounded-2xl px-8 py-4
-                  font-black text-black
-                  bg-primary-cyan uppercase
+                  font-black text-text-on-brand
+                  bg-brand-primary uppercase shadow-lg shadow-brand-primary/20
                   hover:scale-105 active:scale-95
                   transition-all
                 "
@@ -60,9 +60,9 @@ const HeroSection = () => {
                 className="
                   rounded-2xl px-8 py-4
                   font-black
-                  text-text-primary
-                  border-2 border-white/10
-                  hover:border-primary-cyan
+                  text-text-main
+                  border-2 border-border-thin
+                  hover:border-brand-primary
                   transition-all uppercase
                 "
               >
@@ -76,8 +76,8 @@ const HeroSection = () => {
             <div
               className="
                 relative rounded-3xl overflow-hidden
-                bg-background-card
-                border border-white/5 shadow-2xl
+                bg-app-bg
+                border border-border-thin shadow-2xl shadow-text-main/5
               "
             >
               <img

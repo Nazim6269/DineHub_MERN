@@ -25,7 +25,7 @@ const MainLayout = () => {
   return (
     <>
       <Navbar />
-      <main className=" min-h-[calc(100vh-160px)]">
+      <main className="min-h-[calc(100vh-160px)] bg-app-bg text-text-main">
         <Outlet />
       </main>
       <Footer />

@@ -18,26 +18,27 @@ const RangeFilter = () => {
 
   return (
     <div className="w-full">
-      <h1 className="text-lg sm:text-xl font-semibold mb-3 text-text-primary">
-        Price Range
-      </h1>
+      <h3 className="text-[10px] font-black uppercase tracking-[0.2em] mb-6 text-text-dim">
+        Adjust Price Range
+      </h3>
 
       <Slider
         value={values}
         min={MIN}
         max={MAX}
         onChange={handleChange}
-        className="w-full h-2 rounded bg-background-card my-4"
-        thumbClassName="h-5 w-5 bg-[var(--color-accent-pink)] rounded-full cursor-pointer shadow-md focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-pink-light)]"
-        trackClassName="h-2 rounded bg-(--color-accent-cyan)"
+        className="w-full h-2 rounded-full bg-border-strong my-6"
+        thumbClassName="h-6 w-6 bg-brand-primary rounded-full cursor-pointer shadow-lg shadow-brand-primary/20 focus:outline-none ring-4 ring-app-bg"
+        trackClassName="h-2 rounded-full bg-brand-primary"
       />
 
-      <div className="flex justify-between mt-2 gap-3">
-        <div className="flex-1 border border-white/20 rounded text-center py-1 text-text-primary">
-          Tk-{values[0]}
+      <div className="flex justify-between mt-8 gap-4">
+        <div className="flex-1 bg-app-bg border border-border-thin rounded-2xl text-center py-3 text-sm font-black text-text-main shadow-sm uppercase tracking-tighter">
+          Tk {values[0]}
         </div>
-        <div className="flex-1 border border-white/20 rounded text-center py-1 text-text-primary">
-          Tk-{values[1]}
+        <div className="flex flex-col justify-center text-text-dim font-black">-</div>
+        <div className="flex-1 bg-app-bg border border-border-thin rounded-2xl text-center py-3 text-sm font-black text-text-main shadow-sm uppercase tracking-tighter">
+          Tk {values[1]}
         </div>
       </div>
     </div>

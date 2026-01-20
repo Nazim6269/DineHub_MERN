@@ -41,13 +41,13 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-background-dark/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-border-thin bg-app-bg/80 backdrop-blur-xl">
       <div className="container mx-auto px-4">
         <div className="flex h-20 items-center justify-between gap-8">
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="block text-text-secondary hover:text-primary-cyan lg:hidden"
+            className="block text-text-sub hover:text-brand-primary lg:hidden"
           >
             {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
@@ -55,9 +55,9 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-1 text-2xl font-black italic tracking-tighter text-text-primary uppercase"
+            className="flex items-center gap-1 text-2xl font-black italic tracking-tighter text-text-main uppercase"
           >
-            Dine<span className="text-primary-cyan">Hub</span>
+            Dine<span className="text-brand-primary">Hub</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -66,7 +66,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-xs font-black uppercase tracking-widest text-text-secondary transition-all hover:text-primary-cyan active:scale-95"
+                className="text-xs font-black uppercase tracking-widest text-text-sub transition-all hover:text-brand-primary active:scale-95"
               >
                 {link.name}
               </Link>
@@ -76,7 +76,7 @@ const Navbar = () => {
           {/* Search Bar - Desktop */}
           <div className="hidden flex-1 max-w-md relative lg:block group">
             <Search
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted transition-colors group-focus-within:text-primary-cyan"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-text-dim transition-colors group-focus-within:text-brand-primary"
               size={18}
             />
             <input
@@ -84,7 +84,7 @@ const Navbar = () => {
               placeholder="Search dishes..."
               value={searchTerm}
               onChange={handleSearch}
-              className="w-full rounded-2xl border border-white/5 bg-white/5 py-3 pl-12 pr-6 text-sm text-text-primary outline-none transition-all focus:border-primary-cyan/50 focus:bg-white/10 placeholder:text-text-muted/50 font-bold"
+              className="w-full rounded-2xl border border-border-thin bg-surface-bg py-3 pl-12 pr-6 text-sm text-text-main outline-none transition-all focus:border-brand-primary/50 focus:bg-app-bg placeholder:text-text-dim font-bold"
             />
           </div>
 
@@ -93,11 +93,11 @@ const Navbar = () => {
             {/* Cart */}
             <Link
               to="/cart"
-              className="relative p-2.5 rounded-2xl bg-white/5 border border-white/5 text-text-secondary transition-all hover:text-primary-cyan hover:bg-white/10 active:scale-90"
+              className="relative p-2.5 rounded-2xl bg-surface-bg border border-border-thin text-text-sub transition-all hover:text-brand-primary hover:bg-card-bg active:scale-90"
             >
               <ShoppingCart size={22} />
               {cartCount > 0 && (
-                <span className="absolute -top-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-primary-cyan text-[11px] font-black text-black">
+                <span className="absolute -top-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary text-[11px] font-black text-text-on-brand">
                   {cartCount}
                 </span>
               )}
@@ -108,26 +108,26 @@ const Navbar = () => {
                 {/* Profile Button */}
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
-                  className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/5 p-1.5 transition-all hover:bg-white/10"
+                  className="flex items-center gap-3 rounded-2xl border border-border-thin bg-surface-bg p-1.5 transition-all hover:bg-card-bg"
                 >
                   <img
                     src={profile.picture || "https://avatar.iran.liara.run/public"}
                     alt="profile"
                     className="h-8 w-8 rounded-xl object-cover"
                   />
-                  <span className="hidden text-sm font-black text-text-primary lg:block pr-2">
+                  <span className="hidden text-sm font-black text-text-main lg:block pr-2">
                     {profile.name.split(' ')[0]}
                   </span>
                 </button>
 
                 {/* Profile Dropdown */}
                 {isProfileOpen && (
-                  <div className="absolute right-0 mt-3 w-64 origin-top-right rounded-[2rem] border border-white/5 bg-background-card p-3 shadow-2xl ring-1 ring-black/5">
-                    <div className="mb-2 px-4 py-3 border-b border-white/5">
-                      <p className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em]">
+                  <div className="absolute right-0 mt-3 w-64 origin-top-right rounded-[2rem] border border-border-thin bg-app-bg p-3 shadow-2xl ring-1 ring-black/5">
+                    <div className="mb-2 px-4 py-3 border-b border-border-thin">
+                      <p className="text-[10px] font-black text-text-dim uppercase tracking-[0.2em]">
                         Authenticated as
                       </p>
-                      <p className="truncate text-sm font-bold text-text-primary mt-1">
+                      <p className="truncate text-sm font-bold text-text-main mt-1">
                         {profile.email}
                       </p>
                     </div>
@@ -136,7 +136,7 @@ const Navbar = () => {
                       {profile.role === "admin" && (
                         <Link
                           to="/admin/dashboard"
-                          className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-text-secondary transition-all hover:bg-white/5 hover:text-primary-cyan"
+                          className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-text-sub transition-all hover:bg-surface-bg hover:text-brand-primary"
                           onClick={() => setIsProfileOpen(false)}
                         >
                           <LayoutDashboardIcon size={18} />
@@ -146,7 +146,7 @@ const Navbar = () => {
 
                       <Link
                         to="/profile"
-                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-text-secondary transition-all hover:bg-white/5 hover:text-primary-cyan"
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-text-sub transition-all hover:bg-surface-bg hover:text-brand-primary"
                         onClick={() => setIsProfileOpen(false)}
                       >
                         <User size={18} />
@@ -155,7 +155,7 @@ const Navbar = () => {
 
                       <button
                         onClick={handleLogout}
-                        className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-red-400 transition-all hover:bg-red-500/10"
+                        className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-status-error transition-all hover:bg-red-50"
                       >
                         <LogOut size={18} />
                         Secure Logout
@@ -167,7 +167,7 @@ const Navbar = () => {
             ) : (
               <Link
                 to="/login"
-                className="rounded-2xl bg-primary-cyan px-8 py-3 text-xs font-black uppercase tracking-widest text-black transition-all hover:scale-105 active:scale-95"
+                className="rounded-2xl bg-brand-primary px-8 py-3 text-xs font-black uppercase tracking-widest text-text-on-brand transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-primary/10"
               >
                 Login
               </Link>
@@ -177,11 +177,11 @@ const Navbar = () => {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="border-t border-white/5 py-6 lg:hidden fade-in">
+          <div className="border-t border-border-thin py-6 lg:hidden fade-in">
             <div className="flex flex-col gap-6">
               <div className="relative">
                 <Search
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-text-dim"
                   size={20}
                 />
                 <input
@@ -189,7 +189,7 @@ const Navbar = () => {
                   placeholder="Find your favorite dish..."
                   value={searchTerm}
                   onChange={handleSearch}
-                  className="w-full rounded-2xl border border-white/5 bg-white/5 py-3.5 pl-12 pr-6 text-sm text-text-primary font-bold"
+                  className="w-full rounded-2xl border border-border-thin bg-surface-bg py-3.5 pl-12 pr-6 text-sm text-text-main font-bold"
                 />
               </div>
               <div className="flex flex-col gap-2">
@@ -197,7 +197,7 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className="px-4 py-3 text-sm font-black uppercase tracking-widest text-text-secondary hover:text-primary-cyan hover:bg-white/5 rounded-xl transition-all"
+                    className="px-4 py-3 text-sm font-black uppercase tracking-widest text-text-sub hover:text-brand-primary hover:bg-surface-bg rounded-xl transition-all"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}

@@ -1,45 +1,76 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primaryTextColor: oklch(71.4% 0.203 305.504);
-  --color-primaryTextHoverColor: oklch(62.7% 0.265 303.9);
-  /* Brand Colors - Minimal & Solid */
-  --color-primary-cyan: #00d9c0;
-  --color-primary-blue: #2d4de8;
-  --color-primary-navy: #0a1628;
+  /* 
+     MODULAR THEME SYSTEM
+     Change these values to update the entire project identity.
+  */
 
-  /* Background Colors - Clean Dark Mode */
-  --color-background-dark: #070a13;
-  --color-background-card: #111827;
-  --color-background-elevated: #1f2937;
+  /* Brand Identity */
+  --color-brand-primary: #06b6d4;
+  /* The highlight color (Cyan) */
+  --color-brand-secondary: #0ea5e9;
+  /* Secondary highlight */
+  --color-brand-accent: #3b82f6;
+  /* Small accents */
 
-  /* Text Colors */
-  --color-text-primary: #f9fafb;
-  --color-text-secondary: #9ca3af;
-  --color-text-muted: #6b7280;
+  /* Background Levels */
+  --color-app-bg: #ffffff;
+  /* Main site background */
+  --color-card-bg: #f8fafc;
+  /* Cards & Sections background */
+  --color-surface-bg: #f1f5f9;
+  /* Tertiary surfaces/inputs */
 
-  /* Accent Colors */
-  --color-accent-solid: #00d9c0;
-  --color-accent-blue: #3b82f6;
+  /* Text System */
+  --color-text-main: #0f172a;
+  /* Titles and main text */
+  --color-text-sub: #475569;
+  /* Secondary/Descriptive text */
+  --color-text-dim: #94a3b8;
+  /* Muted/Disabled text */
+  --color-text-on-brand: #ffffff;
+  /* Text color on top of brand color */
 
-  /* No Gradients */
+  /* Borders & Dividers */
+  --color-border-thin: #f1f5f9;
+  --color-border-strong: #e2e8f0;
+
+  /* Status Colors */
+  --color-status-success: #10b981;
+  --color-status-error: #ef4444;
+  --color-status-warning: #f59e0b;
 }
 
 @layer components {
-  /* Simple and Minimal Classes */
-  .bgDarkGray {
-    @apply bg-gray-900;
+  /* Reusable Modular Utilities */
+
+  .btn-primary {
+    @apply bg-brand-primary text-text-on-brand px-8 py-3 rounded-2xl font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-primary/20;
   }
 
+  .btn-secondary {
+    @apply bg-white border border-border-strong text-text-main px-8 py-3 rounded-2xl font-black uppercase tracking-widest transition-all hover:bg-surface-bg active:scale-95;
+  }
+
+  .card-premium {
+    @apply bg-card-bg border border-border-thin rounded-[2.5rem] shadow-sm hover:shadow-xl hover:shadow-text-main/5 transition-all duration-500;
+  }
+
+  .input-standard {
+    @apply bg-surface-bg border border-border-thin rounded-2xl px-6 py-4 text-sm text-text-main placeholder:text-text-dim outline-none transition-all focus:border-brand-primary/50 focus:bg-white font-bold;
+  }
+
+  /* Keep legacy classes for backward compatibility during refactor */
   .primaryBtnUi {
-    @apply bg-primary-cyan px-6 py-2.5 text-black font-bold rounded-xl shadow-sm hover:opacity-90 transition-all active:scale-95;
+    @apply btn-primary;
   }
 
   .secondaryBtnUi {
-    @apply bg-gray-800 px-6 py-2.5 text-white font-bold rounded-xl border border-gray-700 hover:bg-gray-700 transition-all active:scale-95;
+    @apply btn-secondary;
   }
 
   .cardContainer {
-    @apply bg-background-card rounded-2xl border border-gray-800 hover:border-gray-700 transition-all;
+    @apply card-premium;
   }
 }

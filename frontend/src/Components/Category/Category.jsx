@@ -6,8 +6,8 @@ const Category = () => {
 
   if (!data) {
     return (
-      <div className="h-[55vh] flex items-center justify-center bg-background-dark text-xl sm:text-3xl text-text-secondary">
-        <div className="animate-pulse font-black uppercase tracking-tighter text-primary-cyan">
+      <div className="h-[55vh] flex items-center justify-center bg-app-bg text-xl sm:text-3xl text-text-dim">
+        <div className="animate-pulse font-black uppercase tracking-tighter text-brand-primary">
           Loading Menu...
         </div>
       </div>
@@ -20,14 +20,14 @@ const Category = () => {
   });
 
   return (
-    <section className="relative py-24 bg-background-dark">
+    <section className="relative py-24 bg-app-bg">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="mb-16 text-center">
-          <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter text-text-primary mb-4">
-            Explore <span className="text-primary-cyan">Categories</span>
+          <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tighter text-text-main mb-4">
+            Explore <span className="text-brand-primary">Categories</span>
           </h2>
-          <p className="text-text-secondary font-bold max-w-2xl mx-auto uppercase text-xs tracking-[0.3em]">
+          <p className="text-text-sub font-bold max-w-2xl mx-auto uppercase text-[10px] tracking-[0.4em]">
             Authentic flavors delivered to your doorstep
           </p>
         </div>
@@ -38,25 +38,25 @@ const Category = () => {
             <Link
               key={item._id}
               to={`/category/${item.CategoryName}`}
-              className="group relative rounded-[2.5rem] bg-background-card border border-white/5 p-8 flex flex-col items-center transition-all duration-500 hover:-translate-y-2 hover:border-primary-cyan/50 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden active:scale-95"
+              className="group relative rounded-[3rem] bg-card-bg border border-border-thin p-10 flex flex-col items-center transition-all duration-500 hover:-translate-y-2 hover:border-brand-primary/30 hover:shadow-xl hover:shadow-text-main/5 overflow-hidden active:scale-95"
             >
-              <div className="absolute inset-0 bg-primary-cyan opacity-0 group-hover:opacity-[0.02] transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-brand-primary opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500" />
 
-              {/* Image */}
-              <div className="mb-6 w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-white/5 bg-background-dark shadow-2xl transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6">
+              {/* Image Container */}
+              <div className="mb-8 w-32 h-32 sm:w-44 sm:h-44 rounded-full overflow-hidden border-[6px] border-app-bg bg-app-bg shadow-xl transition-transform duration-700 group-hover:scale-110 group-hover:rotate-6">
                 <img
                   src={item.img}
                   alt={item.CategoryName}
-                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover grayscale-[10%] group-hover:grayscale-0 transition-all duration-500"
                 />
               </div>
 
               {/* Title */}
-              <h3 className="text-lg sm:text-xl font-black uppercase tracking-widest text-text-primary group-hover:text-primary-cyan transition-colors text-center">
+              <h3 className="text-lg sm:text-xl font-black uppercase tracking-[0.1em] text-text-main group-hover:text-brand-primary transition-colors text-center">
                 {item.CategoryName}
               </h3>
 
-              <div className="mt-4 h-1 w-0 bg-primary-cyan transition-all duration-500 group-hover:w-12 rounded-full" />
+              <div className="mt-5 h-1.5 w-0 bg-brand-primary transition-all duration-500 group-hover:w-16 rounded-full" />
             </Link>
           ))}
         </div>

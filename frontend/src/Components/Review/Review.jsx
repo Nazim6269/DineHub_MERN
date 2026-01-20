@@ -1,26 +1,25 @@
 const Review = () => {
   return (
-    <section className="body-font text-text-primary">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <h1 className="text-xl sm:text-3xl font-medium mb-4 text-(--color-accent-cyan)">
-          Review
-        </h1>
-
-        <div className="flex flex-col gap-4">
-          <div className="w-full bg-background-card p-4 sm:p-6 rounded-xl shadow-lg">
-            <p className="text-text-secondary leading-relaxed mb-4">
-              Write your comment
+    <section className="text-text-main">
+      <div className="container mx-auto">
+        <div className="flex flex-col gap-6">
+          <div className="w-full bg-app-bg p-8 rounded-3xl border border-border-thin shadow-sm">
+            <p className="text-text-dim font-bold uppercase text-[10px] tracking-[0.2em] mb-4">
+              Community Feedback
             </p>
+            <h4 className="text-xl font-black text-text-main mb-6 uppercase tracking-tight">
+              Share your experience
+            </h4>
 
-            <div className="flex flex-col sm:flex-row gap-2">
+            <div className="flex flex-col gap-4">
               <textarea
                 rows={3}
-                className="w-full sm:flex-1 rounded-lg border border-white/20 bg-background-dark px-3 py-2 text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan) focus:border-[var(--color-accent-cyan)] resize-none transition"
-                placeholder="Write your review..."
+                className="w-full rounded-2xl border border-border-thin bg-card-bg px-6 py-4 text-sm text-text-main placeholder:text-text-dim/50 focus:outline-none focus:ring-4 focus:ring-brand-primary/10 focus:border-brand-primary/50 transition-all font-bold resize-none"
+                placeholder="How was the taste and service?..."
               ></textarea>
 
-              <button className="w-full sm:w-auto inline-flex items-center justify-center text-white bg-[var(--color-accent-pink)] py-2 px-6 rounded-lg hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-pink-light)] text-lg font-semibold transition">
-                Submit Review
+              <button className="w-full sm:w-max inline-flex items-center justify-center text-text-on-brand bg-brand-primary py-4 px-10 rounded-2xl hover:scale-105 active:scale-95 text-xs font-black uppercase tracking-widest transition-all shadow-lg shadow-brand-primary/20">
+                Post Review
               </button>
             </div>
           </div>
