@@ -41,32 +41,32 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background-dark/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-background-dark/90 backdrop-blur-xl">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between gap-4">
+        <div className="flex h-20 items-center justify-between gap-8">
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="block text-text-secondary hover:text-(--color-accent-cyan) lg:hidden"
+            className="block text-text-secondary hover:text-primary-cyan lg:hidden"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
 
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2 text-xl font-bold italic tracking-tighter text-text-primary sm:text-2xl"
+            className="flex items-center gap-1 text-2xl font-black italic tracking-tighter text-text-primary uppercase"
           >
-            Dine<span className="text-(--color-primary-cyan)">Hub</span>
+            Dine<span className="text-primary-cyan">Hub</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden gap-6 lg:flex">
+          <nav className="hidden gap-8 lg:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-sm font-medium text-text-secondary transition-colors hover:text-(--color-accent-cyan)"
+                className="text-xs font-black uppercase tracking-widest text-text-secondary transition-all hover:text-primary-cyan active:scale-95"
               >
                 {link.name}
               </Link>
@@ -74,35 +74,30 @@ const Navbar = () => {
           </nav>
 
           {/* Search Bar - Desktop */}
-          <div className="hidden flex-1 max-w-md relative lg:block">
+          <div className="hidden flex-1 max-w-md relative lg:block group">
             <Search
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted transition-colors group-focus-within:text-primary-cyan"
               size={18}
             />
             <input
               type="text"
-              placeholder="Search for delicious food..."
+              placeholder="Search dishes..."
               value={searchTerm}
               onChange={handleSearch}
-              className="w-full rounded-full border border-white/10 bg-white/5 py-2 pl-10 pr-4 text-sm text-text-primary outline-none transition-all focus:border-(--color-accent-cyan) focus:bg-white/10"
+              className="w-full rounded-2xl border border-white/5 bg-white/5 py-3 pl-12 pr-6 text-sm text-text-primary outline-none transition-all focus:border-primary-cyan/50 focus:bg-white/10 placeholder:text-text-muted/50 font-bold"
             />
           </div>
 
           {/* Right Section */}
-          <div className="flex items-center gap-2 sm:gap-4">
-            {/* Search Toggle - Mobile */}
-            <button className="text-text-secondary hover:text-(--color-accent-cyan) lg:hidden">
-              <Search size={22} />
-            </button>
-
+          <div className="flex items-center gap-4">
             {/* Cart */}
             <Link
               to="/cart"
-              className="relative p-2 text-text-secondary transition-colors hover:text-(--color-accent-cyan)"
+              className="relative p-2.5 rounded-2xl bg-white/5 border border-white/5 text-text-secondary transition-all hover:text-primary-cyan hover:bg-white/10 active:scale-90"
             >
-              <ShoppingCart size={24} />
+              <ShoppingCart size={22} />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-(--color-accent-cyan) text-[10px] font-bold text-black shadow-lg">
+                <span className="absolute -top-1.5 -right-1.5 flex h-6 w-6 items-center justify-center rounded-full bg-primary-cyan text-[11px] font-black text-black">
                   {cartCount}
                 </span>
               )}
@@ -113,75 +108,66 @@ const Navbar = () => {
                 {/* Profile Button */}
                 <button
                   onClick={() => setIsProfileOpen(!isProfileOpen)}
-                  className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 p-1 transition-all hover:bg-white/10 sm:pr-3"
+                  className="flex items-center gap-3 rounded-2xl border border-white/5 bg-white/5 p-1.5 transition-all hover:bg-white/10"
                 >
                   <img
                     src={profile.picture || "https://avatar.iran.liara.run/public"}
                     alt="profile"
-                    className="h-8 w-8 rounded-full object-cover"
+                    className="h-8 w-8 rounded-xl object-cover"
                   />
-                  <span className="hidden text-sm font-medium text-text-primary sm:block">
-                    {profile.name}
+                  <span className="hidden text-sm font-black text-text-primary lg:block pr-2">
+                    {profile.name.split(' ')[0]}
                   </span>
                 </button>
 
                 {/* Profile Dropdown */}
                 {isProfileOpen && (
-                  <div className="absolute right-0 mt-2 w-56 origin-top-right rounded-xl border border-white/10 bg-background-card p-2 shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="mb-2 px-3 py-2 border-b border-white/5">
-                      <p className="text-xs font-semibold text-text-muted uppercase tracking-wider">
-                        Account
+                  <div className="absolute right-0 mt-3 w-64 origin-top-right rounded-[2rem] border border-white/5 bg-background-card p-3 shadow-2xl ring-1 ring-black/5">
+                    <div className="mb-2 px-4 py-3 border-b border-white/5">
+                      <p className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em]">
+                        Authenticated as
                       </p>
-                      <p className="truncate text-sm font-medium text-text-primary">
+                      <p className="truncate text-sm font-bold text-text-primary mt-1">
                         {profile.email}
                       </p>
                     </div>
 
-                    {profile.role === "admin" && (
+                    <div className="space-y-1">
+                      {profile.role === "admin" && (
+                        <Link
+                          to="/admin/dashboard"
+                          className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-text-secondary transition-all hover:bg-white/5 hover:text-primary-cyan"
+                          onClick={() => setIsProfileOpen(false)}
+                        >
+                          <LayoutDashboardIcon size={18} />
+                          Admin Console
+                        </Link>
+                      )}
+
                       <Link
-                        to="/admin/dashboard"
-                        className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-text-secondary transition-colors hover:bg-white/5 hover:text-(--color-accent-cyan)"
+                        to="/profile"
+                        className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-text-secondary transition-all hover:bg-white/5 hover:text-primary-cyan"
                         onClick={() => setIsProfileOpen(false)}
                       >
-                        <LayoutDashboardIcon size={18} />
-                        Dashboard
+                        <User size={18} />
+                        Account Settings
                       </Link>
-                    )}
 
-                    <Link
-                      to="/profile"
-                      className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-text-secondary transition-colors hover:bg-white/5 hover:text-(--color-accent-cyan)"
-                      onClick={() => setIsProfileOpen(false)}
-                    >
-                      <User size={18} />
-                      My Profile
-                    </Link>
-
-                    <Link
-                      to="/settings"
-                      className="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-text-secondary transition-colors hover:bg-white/5 hover:text-(--color-accent-cyan)"
-                      onClick={() => setIsProfileOpen(false)}
-                    >
-                      <Settings size={18} />
-                      Settings
-                    </Link>
-
-                    <div className="my-1 border-t border-white/5" />
-
-                    <button
-                      onClick={handleLogout}
-                      className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-red-400 transition-colors hover:bg-red-500/10"
-                    >
-                      <LogOut size={18} />
-                      Log out
-                    </button>
+                      <button
+                        onClick={handleLogout}
+                        className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-bold text-red-400 transition-all hover:bg-red-500/10"
+                      >
+                        <LogOut size={18} />
+                        Secure Logout
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
             ) : (
               <Link
                 to="/login"
-                className="rounded-full bg-(--color-accent-cyan) px-6 py-2 text-sm font-bold text-black transition-all hover:bg-accent-cyan-light hover:shadow-[0_0_20px_rgba(0,217,192,0.4)]"
+                className="rounded-2xl bg-primary-cyan px-8 py-3 text-xs font-black uppercase tracking-widest text-black transition-all hover:scale-105 active:scale-95"
               >
                 Login
               </Link>
@@ -191,31 +177,33 @@ const Navbar = () => {
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="border-t border-white/10 py-4 lg:hidden">
-            <div className="flex flex-col gap-4">
+          <div className="border-t border-white/5 py-6 lg:hidden fade-in">
+            <div className="flex flex-col gap-6">
               <div className="relative">
                 <Search
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted"
-                  size={18}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-text-muted"
+                  size={20}
                 />
                 <input
                   type="text"
-                  placeholder="Search..."
+                  placeholder="Find your favorite dish..."
                   value={searchTerm}
                   onChange={handleSearch}
-                  className="w-full rounded-lg border border-white/10 bg-white/5 py-2 pl-10 pr-4 text-sm text-text-primary"
+                  className="w-full rounded-2xl border border-white/5 bg-white/5 py-3.5 pl-12 pr-6 text-sm text-text-primary font-bold"
                 />
               </div>
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className="text-base font-medium text-text-secondary hover:text-(--color-accent-cyan)"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              <div className="flex flex-col gap-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className="px-4 py-3 text-sm font-black uppercase tracking-widest text-text-secondary hover:text-primary-cyan hover:bg-white/5 rounded-xl transition-all"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         )}

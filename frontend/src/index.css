@@ -3,49 +3,43 @@
 @theme {
   --color-primaryTextColor: oklch(71.4% 0.203 305.504);
   --color-primaryTextHoverColor: oklch(62.7% 0.265 303.9);
-  /* Brand Colors */
+  /* Brand Colors - Minimal & Solid */
   --color-primary-cyan: #00d9c0;
   --color-primary-blue: #2d4de8;
   --color-primary-navy: #0a1628;
 
-  /* Background Colors */
-  --color-background-dark: #0a0f1c;
-  --color-background-card: #0d1b2a;
-  --color-background-gradient-from: #2d4de8;
-  --color-background-gradient-to: #1a0b3d;
+  /* Background Colors - Clean Dark Mode */
+  --color-background-dark: #070a13;
+  --color-background-card: #111827;
+  --color-background-elevated: #1f2937;
 
   /* Text Colors */
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #94a3b8;
-  --color-text-muted: #64748b;
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
 
   /* Accent Colors */
-  --color-accent-cyan: #00d9c0;
-  --color-accent-cyan-light: #1de9b6;
+  --color-accent-solid: #00d9c0;
+  --color-accent-blue: #3b82f6;
 
-  /* Custom Background Images */
-  --background-image-gradient-radial: radial-gradient(
-    ellipse at top right,
-    var(--tw-gradient-stops)
-  );
-  --background-image-gradient-mesh: radial-gradient(
-      at 80% 0%,
-      rgba(45, 77, 232, 0.4) 0%,
-      transparent 50%
-    ),
-    radial-gradient(at 0% 50%, rgba(0, 217, 192, 0.2) 0%, transparent 50%);
+  /* No Gradients */
 }
 
 @layer components {
+  /* Simple and Minimal Classes */
   .bgDarkGray {
-    @apply bg-linear-to-r from-gray-900 via-gray-800 to-gray-900;
+    @apply bg-gray-900;
   }
 
   .primaryBtnUi {
-    @apply bg-linear-to-r from-purple-500 to-indigo-500 px-4 py-2 text-white font-semibold shadow-lg hover:from-purple-600 hover:to-indigo-600 transition focus:outline-none focus:ring-2 focus:ring-purple-400;
+    @apply bg-primary-cyan px-6 py-2.5 text-black font-bold rounded-xl shadow-sm hover:opacity-90 transition-all active:scale-95;
   }
 
   .secondaryBtnUi {
-    @apply rounded-lg bg-linear-to-r from-gray-700 to-gray-900 px-4 py-2 text-center text-white font-semibold shadow-sm hover:from-gray-600 hover:to-gray-800 transition focus:outline-none focus:ring-2 focus:ring-gray-500;
+    @apply bg-gray-800 px-6 py-2.5 text-white font-bold rounded-xl border border-gray-700 hover:bg-gray-700 transition-all active:scale-95;
+  }
+
+  .cardContainer {
+    @apply bg-background-card rounded-2xl border border-gray-800 hover:border-gray-700 transition-all;
   }
 }

@@ -44,7 +44,7 @@ const Cart = () => {
           {/* Cart Items */}
           <div className="w-full lg:w-2/3 bg-background-card rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl">
             <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-8">
-              <h1 className="text-3xl font-extrabold bg-linear-to-r from-(--color-primary-cyan) to-(--color-primary-blue) bg-clip-text text-transparent">
+              <h1 className="text-3xl font-extrabold bg-primary-cyan bg-clip-text text-transparent">
                 Shopping Cart
               </h1>
               <span className="text-text-secondary font-medium">{amount} Items</span>
@@ -187,7 +187,7 @@ const Cart = () => {
                   </div>
                 </div>
 
-                <button className="w-full bg-linear-to-r from-(--color-primary-cyan) to-(--color-primary-blue) py-4 rounded-2xl font-black text-black text-lg uppercase shadow-[0_0_30px_rgba(0,217,192,0.3)] hover:shadow-[0_0_40px_rgba(0,217,192,0.5)] transition-all duration-300">
+                <button className="w-full bg-primary-cyan py-4 rounded-2xl font-black text-black text-lg uppercase shadow-[0_0_30px_rgba(0,217,192,0.3)] hover:shadow-[0_0_40px_rgba(0,217,192,0.5)] transition-all duration-300">
                   Proceed to Checkout
                 </button>
 

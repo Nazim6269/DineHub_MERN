@@ -1,7 +1,7 @@
-import { Search } from "lucide-react";
+import { Search, ShoppingBag, Star } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setSelectProduct } from "../../redux/actions/actionsCreator";
+import { setSelectProduct, addToCart } from "../../redux/actions/actionsCreator";
 
 const Cards = () => {
   const { data } = useSelector((state) => state.fetchReducer);
@@ -10,15 +10,8 @@ const Cards = () => {
 
   if (!data) {
     return (
-      <div
-        className="
-          h-[55vh] flex items-center justify-center
-          text-xl sm:text-3xl
-          bg-background-dark
-          text-text-secondary
-        "
-      >
-        Loading...
+      <div className="h-[55vh] flex items-center justify-center bg-background-dark text-text-secondary">
+        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary-cyan"></div>
       </div>
     );
   }
@@ -28,146 +21,95 @@ const Cards = () => {
     item.CategoryName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleClick = () => {
-    dispatch(setSelectProduct(data));
-  };
-
   return (
-    <section
-      className="
-        relative
-        bg-background-dark
-        text-text-primary
-      "
-    >
-      {/* Background glow */}
-      <div
-        className="
-          pointer-events-none absolute inset-0
-          bg-(--background-image-gradient-mesh)
-          opacity-30
-        "
-      />
+    <section className="relative bg-background-dark py-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Header */}
-        <div className="flex flex-col lg:flex-row gap-6 mb-14 items-center">
-          <div className="w-full lg:w-1/2">
-            <h1
-              className="
-                text-3xl sm:text-4xl font-bold mb-3
-                bg-gradient-to-r
-                from-[var(--color-primary-cyan)]
-                to-[var(--color-primary-blue)]
-                bg-clip-text text-transparent
-              "
-            >
-              Food Items
-            </h1>
-            <div className="h-1 w-24 rounded bg-(--color-accent-cyan)" />
+        {/* Section Header */}
+        {!searchTerm && (
+          <div className="mb-16">
+            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tighter text-text-primary">
+              Most <span className="text-primary-cyan">Popular</span> Dishes
+            </h2>
+            <div className="h-1.5 w-20 bg-primary-cyan mt-4 rounded-full" />
           </div>
+        )}
 
-          <p
-            className="
-              w-full lg:w-1/2
-              text-sm sm:text-base
-              text-text-secondary
-              leading-relaxed
-            "
-          >
-            Explore our wide variety of fast-food options, carefully curated to
-            satisfy every taste. Enjoy a seamless experience while discovering
-            your favorites.
-          </p>
-        </div>
-
-        {/* Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredData.length > 0 ? (
-            filteredData.map((item) => {
-              const { _id, img, name, CategoryName, description } = item;
-
+        {filteredData.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {filteredData.map((item) => {
+              const { _id, img, name, CategoryName, options } = item;
               return (
                 <div
                   key={_id}
-                  className="
-                    group relative
-                    rounded-2xl overflow-hidden
-                    bg-background-card
-                    border border-white/10
-                    transition-all duration-300
-                    hover:-translate-y-1
-                    hover:border-[var(--color-accent-cyan)]
-                    hover:shadow-[0_0_40px_rgba(0,217,192,0.25)]
-                  "
+                  className="group relative bg-background-card border border-white/5 rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-primary-cyan/30 hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)]"
                 >
-                  {/* Image */}
-                  <Link to={`/cardDetails/${_id}`}>
-                    <img
-                      onClick={handleClick}
-                      src={img}
-                      alt={name}
-                      className="
-                        w-full h-56 sm:h-64
-                        object-cover
-                        group-hover:scale-105
-                        transition-transform duration-300
-                      "
-                    />
-                  </Link>
-
-                  {/* Content */}
-                  <div className="p-5 flex flex-col gap-2">
-                    <span
-                      className="
-                        text-xs font-semibold tracking-widest
-                        text-text-muted
-                      "
-                    >
-                      {name}
-                    </span>
-
-                    <h2
-                      className="
-                        text-lg sm:text-xl font-bold
-                        text-text-primary
-                        group-hover:text-(--color-accent-cyan)
-                        transition
-                      "
-                    >
+                  {/* Card Image Wrapper */}
+                  <div className="relative h-64 overflow-hidden">
+                    <Link to={`/cardDetails/${_id}`} onClick={() => dispatch(setSelectProduct([item]))}>
+                      <img
+                        src={img}
+                        alt={name}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    </Link>
+                    <div className="absolute top-5 right-5 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10 flex items-center gap-1.5 shadow-xl">
+                      <Star size={14} className="text-yellow-400 fill-current" />
+                      <span className="text-xs font-black text-white">4.8</span>
+                    </div>
+                    <div className="absolute bottom-5 left-5 bg-primary-cyan text-black px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl">
                       {CategoryName}
-                    </h2>
+                    </div>
+                  </div>
 
-                    <p
-                      className="
-                        text-sm sm:text-base
-                        text-text-secondary
-                        leading-relaxed
-                      "
+                  {/* Card Content */}
+                  <div className="p-8">
+                    <Link
+                      to={`/cardDetails/${_id}`}
+                      onClick={() => dispatch(setSelectProduct([item]))}
+                      className="block mb-4"
                     >
-                      {description.length > 80
-                        ? description.substring(0, 80) + "..."
-                        : description}
-                    </p>
+                      <h3 className="text-xl font-black text-text-primary uppercase tracking-tight line-clamp-1 group-hover:text-primary-cyan transition-colors">
+                        {name}
+                      </h3>
+                    </Link>
+
+                    <div className="flex items-center justify-between mb-8">
+                      <div>
+                        <p className="text-[10px] font-black text-text-muted uppercase tracking-[0.2em] mb-1">Price starting from</p>
+                        <p className="text-2xl font-black text-text-primary tracking-tighter">
+                          Tk {options[0].half || options[0].full}
+                        </p>
+                      </div>
+                      <button
+                        onClick={() => dispatch(addToCart(item))}
+                        className="p-4 rounded-2xl bg-white/5 border border-white/5 text-text-primary hover:bg-primary-cyan hover:text-black hover:border-transparent transition-all active:scale-90"
+                      >
+                        <ShoppingBag size={20} />
+                      </button>
+                    </div>
 
                     <Link
                       to={`/cardDetails/${_id}`}
-                      className="rounded-full bg-(--color-accent-cyan) px-6 py-2 text-sm font-bold text-black transition-all hover:bg-accent-cyan-light hover:shadow-[0_0_20px_rgba(0,217,192,0.4)]"
+                      onClick={() => dispatch(setSelectProduct([item]))}
+                      className="block w-full text-center py-4 rounded-2xl border-2 border-white/5 bg-transparent text-xs font-black uppercase tracking-[0.2em] text-text-muted hover:border-primary-cyan hover:text-primary-cyan transition-all"
                     >
-                      View Details
+                      Details View
                     </Link>
                   </div>
                 </div>
               );
-            })
-          ) : (
-            <div className="col-span-full flex flex-col items-center justify-center py-20 text-text-secondary">
-              <Search size={48} className="mb-4 opacity-20" />
-              <p className="text-xl font-medium">No food items found matching "{searchTerm}"</p>
-              <p className="text-sm">Try searching for something else!</p>
-            </div>
-          )}
-        </div>
+            })}
+          </div>
+        ) : (
+          <div className="text-center py-32 bg-background-card rounded-[3rem] border-2 border-dashed border-white/5">
+            <Search size={48} className="mx-auto text-text-muted mb-6 opacity-20" />
+            <h3 className="text-3xl font-black uppercase text-text-primary mb-2">No results found</h3>
+            <p className="text-text-secondary font-bold uppercase text-xs tracking-widest">
+              Try searching for something else
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

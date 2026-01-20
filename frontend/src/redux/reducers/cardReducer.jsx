@@ -23,7 +23,7 @@ const initialState = {
   cart: getLocalCart(),
   profile: getLocalProfile(),
   selectedProduct: getLocalSeclectedProduct(),
-  filteredRange: { minValue: 0, maxValue: 100 },
+  filteredRange: { minValue: 0, maxValue: 1000 },
   searchTerm: "",
 };
 

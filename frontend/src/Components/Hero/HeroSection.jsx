@@ -7,11 +7,11 @@ const HeroSection = () => {
         text-text-primary
       "
     >
-      {/* Background glow */}
+      {/* Simple Background */}
       <div
         className="
           pointer-events-none absolute inset-0
-          bg-(--background-image-gradient-mesh)
+          bg-background-dark/50
         "
       />
 
@@ -21,12 +21,9 @@ const HeroSection = () => {
           <div className="flex flex-col text-center md:text-left md:w-1/2 gap-6">
             <h1
               className="
-                text-3xl sm:text-4xl md:text-5xl lg:text-6xl
-                font-bold leading-tight
-                bg-gradient-to-r
-                from-[var(--color-primary-cyan)]
-                to-[var(--color-primary-blue)]
-                bg-clip-text text-transparent
+                text-3xl sm:text-4xl md:text-5xl lg:text-7xl
+                font-black leading-tight
+                text-primary-cyan uppercase tracking-tighter
               "
             >
               Savor Every Flavor,
@@ -49,12 +46,11 @@ const HeroSection = () => {
             <div className="flex justify-center md:justify-start gap-4 mt-6">
               <button
                 className="
-                  rounded-full px-6 py-3
-                  font-semibold text-black
-                  bg-(--color-accent-cyan)
-                  hover:bg-[var(--color-accent-cyan-light)]
-                  shadow-[0_0_40px_rgba(0,217,192,0.35)]
-                  transition
+                  rounded-2xl px-8 py-4
+                  font-black text-black
+                  bg-primary-cyan uppercase
+                  hover:scale-105 active:scale-95
+                  transition-all
                 "
               >
                 Get Started
@@ -62,12 +58,12 @@ const HeroSection = () => {
 
               <button
                 className="
-                  rounded-full px-6 py-3
-                  font-medium
+                  rounded-2xl px-8 py-4
+                  font-black
                   text-text-primary
-                  border border-white/10
-                  hover:border-[var(--color-accent-cyan)]
-                  transition
+                  border-2 border-white/10
+                  hover:border-primary-cyan
+                  transition-all uppercase
                 "
               >
                 Watch Demo
@@ -79,24 +75,15 @@ const HeroSection = () => {
           <div className="md:w-1/2 w-full flex justify-center">
             <div
               className="
-                relative rounded-2xl overflow-hidden
+                relative rounded-3xl overflow-hidden
                 bg-background-card
-                border border-white/10
+                border border-white/5 shadow-2xl
               "
             >
               <img
                 src="./h11.png"
                 alt="hero"
                 className="w-full max-w-md sm:max-w-lg object-cover"
-              />
-
-              {/* Image glow */}
-              <div
-                className="
-                  absolute inset-0
-                  shadow-[0_0_80px_rgba(45,77,232,0.25)]
-                  pointer-events-none
-                "
               />
             </div>
           </div>
