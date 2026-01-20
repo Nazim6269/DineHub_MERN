@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Cards from "../Components/Cards/Cards";
 import Categories from "../Components/Categories/Categories";
 import HeroSection from "../Components/Hero/HeroSection";
@@ -12,6 +12,7 @@ import {
 
 const Home = () => {
   const dispatch = useDispatch();
+  const { searchTerm } = useSelector((state) => state.filterReducer);
 
   //useEffect function for fetching data
   useEffect(() => {
@@ -26,9 +27,15 @@ const Home = () => {
 
   return (
     <div>
-      <HeroSection />
-      <Categories />
-      <Cards />
+      {searchTerm ? (
+        <Cards />
+      ) : (
+        <>
+          <HeroSection />
+          <Categories />
+          <Cards />
+        </>
+      )}
     </div>
   );
 };

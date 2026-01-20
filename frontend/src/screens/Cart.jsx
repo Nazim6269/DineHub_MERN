@@ -31,7 +31,7 @@ const Cart = () => {
 
   if (!cart.length) {
     return (
-      <div className="h-[55vh] flex justify-center items-center text-2xl font-semibold text-gray-300">
+      <div className="h-[55vh] flex justify-center items-center text-2xl font-semibold text-gray-300 bg-background-dark">
         Your cart is empty.
       </div>
     );
