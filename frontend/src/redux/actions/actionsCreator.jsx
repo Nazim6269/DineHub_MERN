@@ -7,7 +7,7 @@ import {
   RANGE_FILTER,
   REMOVE_FROM_CART,
   SELECTED_PRODUCT,
-  SET_PROFILE_INFO,
+  SET_PROFILE_INFO, SEARCH_FILTER
 } from "./actionsTypes";
 
 //action creators

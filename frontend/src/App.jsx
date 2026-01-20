@@ -23,6 +23,8 @@ import Cart from "./screens/Cart";
 import Contact from "./screens/Contact";
 import Home from "./screens/Home";
 import NotFound from "./screens/NotFound";
+import Profile from "./screens/Profile";
+import Settings from "./screens/Settings";
 // Create a client
 const queryClient = new QueryClient();
 
@@ -45,6 +47,8 @@ function App() {
                 <Route path="/cardDetails/:id" element={<CardDetails />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/settings" element={<Settings />} />
                 <Route path="/category/:id" element={<SingleCategory />} />
               </Route>
             </Route>

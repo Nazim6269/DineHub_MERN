@@ -38,155 +38,172 @@ const Cart = () => {
   }
 
   return (
-    <div className="min-h-screen bgDarkGray px-4 sm:px-6 lg:px-8 py-10">
-      <div className="flex flex-col lg:flex-row gap-6 shadow-md rounded-lg bg-background-card p-4 sm:p-6">
-        {/* Cart Items */}
-        <div className="w-full lg:w-2/3">
-          <h1 className="font-semibold text-2xl text-(--color-primary-cyan) border-b pb-4 mb-4">
-            Shopping Cart
-          </h1>
+    <div className="min-h-screen bg-background-dark text-text-primary px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Cart Items */}
+          <div className="w-full lg:w-2/3 bg-background-card rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl">
+            <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-8">
+              <h1 className="text-3xl font-extrabold bg-linear-to-r from-(--color-primary-cyan) to-(--color-primary-blue) bg-clip-text text-transparent">
+                Shopping Cart
+              </h1>
+              <span className="text-text-secondary font-medium">{amount} Items</span>
+            </div>
 
-          {/* Table headers */}
-          <div className="hidden lg:flex mt-3 text-xs uppercase text-gray-400">
-            <h3 className="font-semibold w-2/5">Product Details</h3>
-            <h3 className="font-semibold text-center w-1/5">Quantity</h3>
-            <h3 className="font-semibold text-center w-1/5">Price</h3>
-            <h3 className="font-semibold text-center w-1/5">Total</h3>
+            {/* Table headers - Desktop */}
+            <div className="hidden lg:grid grid-cols-12 gap-4 mb-6 text-xs uppercase font-bold tracking-widest text-text-muted px-4">
+              <div className="col-span-6">Product Details</div>
+              <div className="col-span-2 text-center">Quantity</div>
+              <div className="col-span-2 text-center">Price</div>
+              <div className="col-span-2 text-center">Total</div>
+            </div>
+
+            <div className="space-y-6">
+              {cart.map((item) => {
+                const { _id, CategoryName, name, img, quantity } = item;
+                const price = item.options[0].full;
+
+                return (
+                  <div
+                    key={_id}
+                    className="group bg-white/5 border border-white/5 hover:border-(--color-accent-cyan)/30 rounded-2xl p-4 transition-all duration-300"
+                  >
+                    <div className="flex flex-col sm:grid sm:grid-cols-12 items-center gap-4">
+                      {/* Product Info */}
+                      <div className="col-span-6 flex items-center gap-4 w-full">
+                        <div className="relative overflow-hidden rounded-xl h-20 w-20 shrink-0">
+                          <img
+                            className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                            src={img}
+                            alt={name}
+                          />
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <h3 className="text-lg font-bold text-text-primary capitalize leading-tight">
+                            {name}
+                          </h3>
+                          <span className="text-xs text-text-muted capitalize">
+                            {CategoryName}
+                          </span>
+                          <button
+                            onClick={() => dispatch(removeFromCart(_id))}
+                            className="text-xs font-semibold text-red-400 hover:text-red-300 transition mt-1 flex items-center gap-1"
+                          >
+                            Remove Item
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Quantity Controls */}
+                      <div className="col-span-2 flex items-center justify-center gap-4 bg-white/5 rounded-xl p-1 border border-white/5">
+                        <button
+                          onClick={() => dispatch(decrementItem(_id))}
+                          className="w-8 h-8 flex items-center justify-center text-text-secondary hover:text-(--color-accent-cyan) transition"
+                        >
+                          <svg className="w-4 h-4" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
+                          </svg>
+                        </button>
+                        <span className="font-bold text-sm w-4 text-center">
+                          {quantity}
+                        </span>
+                        <button
+                          onClick={() => dispatch(addToCart(item))}
+                          className="w-8 h-8 flex items-center justify-center text-text-secondary hover:text-(--color-accent-cyan) transition"
+                        >
+                          <svg className="w-4 h-4" viewBox="0 0 448 512" fill="currentColor">
+                            <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
+                          </svg>
+                        </button>
+                      </div>
+
+                      {/* Price Info */}
+                      <div className="col-span-2 text-center font-medium text-text-secondary">
+                        ${price}
+                      </div>
+
+                      {/* Total Info */}
+                      <div className="col-span-2 text-center font-bold text-(--color-accent-cyan)">
+                        ${price * quantity}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Continue Shopping */}
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 mt-10 font-bold text-sm text-text-muted hover:text-(--color-accent-cyan) transition-all"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 448 512" fill="currentColor">
+                <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
+              </svg>
+              Go back to Menu
+            </Link>
           </div>
 
-          {cart.map((item) => {
-            const { _id, CategoryName, img, quantity } = item;
-            const { full } = item.options[0];
+          {/* Order Summary */}
+          <div className="w-full lg:w-1/3 space-y-6">
+            <div className="bg-background-card rounded-3xl p-8 border border-white/10 shadow-2xl">
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                Order Summary
+              </h2>
 
-            return (
-              <div
-                key={_id}
-                className="flex flex-col sm:flex-row sm:items-center gap-4 py-4 border-b border-gray-700"
-              >
-                {/* Product Info */}
-                <div className="flex items-center gap-4 sm:flex-1">
-                  <img
-                    className="h-20 w-20 object-cover rounded"
-                    src={img}
-                    alt={CategoryName}
-                  />
-                  <div className="flex flex-col gap-2">
-                    <span className="text-(--color-accent-cyan) font-bold capitalize">
-                      {CategoryName}
+              <div className="space-y-4 mb-8">
+                <div className="flex justify-between items-center text-text-secondary">
+                  <span className="font-medium">Subtotal ({amount} items)</span>
+                  <span className="font-bold text-text-primary text-lg">${total - 10}</span>
+                </div>
+                <div className="flex justify-between items-center text-text-secondary">
+                  <span className="font-medium">Shipping Cost</span>
+                  <span className="font-bold text-text-primary">$10.00</span>
+                </div>
+                <div className="pt-4 border-t border-white/5">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xl font-bold">Total</span>
+                    <span className="text-2xl font-extrabold text-(--color-accent-cyan)">
+                      ${total}
                     </span>
-                    <button
-                      onClick={() => dispatch(removeFromCart(_id))}
-                      className="text-xs text-gray-400 hover:text-red-500 self-start"
-                    >
-                      Remove
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                <div>
+                  <label className="text-xs font-bold text-text-muted uppercase tracking-wider mb-2 block">
+                    Promo Code
+                  </label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      placeholder="Enter code"
+                      className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 outline-none focus:border-(--color-accent-cyan) text-sm"
+                    />
+                    <button className="px-4 py-2.5 bg-white/10 hover:bg-white/20 rounded-xl text-sm font-bold transition">
+                      Apply
                     </button>
                   </div>
                 </div>
 
-                {/* Quantity Controls */}
-                <div className="flex items-center gap-3 sm:justify-center sm:w-1/5">
-                  <button
-                    onClick={() => dispatch(decrementItem(_id))}
-                    className="p-2 text-gray-400 hover:text-gray-200"
-                  >
-                    <svg
-                      className="w-4 h-4"
-                      viewBox="0 0 448 512"
-                      fill="currentColor"
-                    >
-                      <path d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                    </svg>
-                  </button>
-                  <div className="px-3 py-1 border border-gray-700 rounded text-center min-w-[3rem]">
-                    {quantity}
-                  </div>
-                  <button
-                    onClick={() => dispatch(addToCart(item))}
-                    className="p-2 text-gray-400 hover:text-gray-200"
-                  >
-                    <svg
-                      className="w-4 h-4"
-                      viewBox="0 0 448 512"
-                      fill="currentColor"
-                    >
-                      <path d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                    </svg>
-                  </button>
-                </div>
+                <button className="w-full bg-linear-to-r from-(--color-primary-cyan) to-(--color-primary-blue) py-4 rounded-2xl font-black text-black text-lg uppercase shadow-[0_0_30px_rgba(0,217,192,0.3)] hover:shadow-[0_0_40px_rgba(0,217,192,0.5)] transition-all duration-300">
+                  Proceed to Checkout
+                </button>
 
-                {/* Price Info */}
-                <div className="flex flex-wrap sm:flex-nowrap sm:items-center gap-4 sm:gap-6 sm:w-2/5">
-                  <span className="text-center sm:text-left font-semibold text-sm flex-1">
-                    ${full}
-                  </span>
-                  <span className="text-center sm:text-left font-semibold text-sm flex-1">
-                    ${full * quantity}
-                  </span>
-                </div>
+                <p className="text-center text-xs text-text-muted px-4">
+                  By proceeding, you agree to our Terms of Service and Privacy Policy.
+                </p>
               </div>
-            );
-          })}
-
-          {/* Continue Shopping */}
-          <Link
-            to="/"
-            className="flex items-center font-semibold text-(--color-accent-cyan) text-sm mt-6 gap-2 hover:text-(--color-primary-cyan) transition"
-          >
-            <svg
-              className="fill-current text-(--color-accent-cyan) w-4"
-              viewBox="0 0 448 512"
-            >
-              <path d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
-            </svg>
-            Continue Shopping
-          </Link>
-        </div>
-
-        {/* Order Summary */}
-        <div className="w-full lg:w-1/3 px-2 sm:px-4 lg:px-6 py-6 bg-gray-800 rounded-lg border border-gray-700 mt-6 lg:mt-0">
-          <h1 className="font-semibold text-2xl text-(--color-primary-cyan) border-b pb-4">
-            Order Summary
-          </h1>
-          <div className="flex font-bold justify-between my-4 uppercase text-gray-300">
-            <span>Items</span>
-            <span>{amount}</span>
-          </div>
-
-          <div className="space-y-2 mb-4">
-            <label className="font-medium inline-block text-sm uppercase text-gray-300">
-              Shipping
-            </label>
-            <select className="block p-2 text-gray-400 w-full text-sm border border-gray-700 rounded bg-gray-900">
-              <option>Standard shipping - $10.00</option>
-            </select>
-          </div>
-
-          <div className="space-y-2 mb-4">
-            <label
-              htmlFor="promo"
-              className="font-semibold inline-block text-sm uppercase text-gray-300"
-            >
-              Promo Code
-            </label>
-            <input
-              type="text"
-              id="promo"
-              placeholder="Enter your code"
-              className="p-2 text-sm w-full border border-gray-700 rounded bg-gray-900 text-white mt-2"
-            />
-            <button className="w-full bg-(--color-accent-cyan) hover:bg-(--color-primary-cyan) px-5 py-2 text-sm text-white uppercase rounded transition">
-              Apply
-            </button>
-          </div>
-
-          <div className="border-t border-gray-700 pt-4">
-            <div className="flex font-bold justify-between text-md uppercase mb-4 text-gray-300">
-              <span>Total cost</span>
-              <span>${total}</span>
             </div>
-            <button className="w-full bg-(--color-accent-cyan) hover:bg-(--color-primary-cyan) font-semibold py-3 text-sm text-white uppercase rounded transition">
-              Checkout
-            </button>
+
+            {/* Support Box */}
+            <div className="bg-background-card/50 rounded-3xl p-6 border border-white/5">
+              <h4 className="font-bold mb-1">Need help?</h4>
+              <p className="text-xs text-text-muted">
+                Our support team is available 24/7 for any questions regarding your order.
+              </p>
+            </div>
           </div>
         </div>
       </div>
