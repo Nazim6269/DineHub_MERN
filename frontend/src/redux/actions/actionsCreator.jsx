@@ -71,3 +71,10 @@ export const setRangeValue = (payload) => {
     payload: payload,
   };
 };
+
+export const setSearchTerm = (payload) => {
+  return {
+    type: SEARCH_FILTER,
+    payload: payload,
+  };
+};

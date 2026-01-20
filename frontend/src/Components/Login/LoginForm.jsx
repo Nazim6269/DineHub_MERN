@@ -28,7 +28,9 @@ const LoginForm = () => {
       });
       const data = await res.json();
       if (data.success) {
-        setAccessTokenCookie("accessToken", data.payload, 30);
+        setAccessTokenCookie("accessToken", data.payload.accessToken, 30);
+        dispatch(setProfileInfo(data.payload.user));
+        profileInLocalStorage(data.payload.user);
         navigate("/");
       } else {
         toast(data.message);

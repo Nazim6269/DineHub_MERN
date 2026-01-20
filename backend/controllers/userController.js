@@ -135,15 +135,12 @@ const loginPostController = async (req, res, next) => {
     //createToken
     const accessToken = createJWT({ email, password }, jwtAccessKey, "100m");
 
-    // setAccessTokenCookie(res, accessToken);
-
-    // const refreshToken = createJWT({ email, password }, jwtAccessKey, "7d");
-    // setRefreshTokenCookie(refreshToken);
+    const { password: _, tokens, ...userInfo } = isExist.toObject();
 
     return successResponse(res, {
       statusCode: 200,
       message: "Successfully login",
-      payload: accessToken,
+      payload: { accessToken, user: userInfo },
     });
   } catch (error) {
     return next(error);

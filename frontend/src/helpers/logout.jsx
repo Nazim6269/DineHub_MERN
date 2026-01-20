@@ -1,10 +1,8 @@
-import { useNavigate } from "react-router-dom";
 import { deleteAccessToken } from "./deleteAccessToken";
 
 export const logout = async (profile) => {
-  const navigate = useNavigate();
   try {
-    const response = await fetch("http://localhost:3333/logout", {
+    await fetch("http://localhost:3333/logout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -13,7 +11,7 @@ export const logout = async (profile) => {
     });
 
     deleteAccessToken("accessToken");
-    navigate("/login");
+    localStorage.removeItem("ProfileInfo");
   } catch (error) {
     console.log(error);
   }

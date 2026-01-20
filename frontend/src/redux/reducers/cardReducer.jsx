@@ -12,7 +12,7 @@ import {
   RANGE_FILTER,
   REMOVE_FROM_CART,
   SELECTED_PRODUCT,
-  SET_PROFILE_INFO,
+  SET_PROFILE_INFO, SEARCH_FILTER
 } from "../actions/actionsTypes";
 
 //initial states
@@ -24,6 +24,7 @@ const initialState = {
   profile: getLocalProfile(),
   selectedProduct: getLocalSeclectedProduct(),
   filteredRange: { minValue: 0, maxValue: 100 },
+  searchTerm: "",
 };
 
 //reducer functions
@@ -129,6 +130,12 @@ export const filterReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         filteredRange: { minValue: payload[0], maxValue: payload[1] },
+      };
+
+    case SEARCH_FILTER:
+      return {
+        ...state,
+        searchTerm: payload,
       };
 
     default:

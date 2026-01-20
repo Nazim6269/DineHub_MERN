@@ -5,7 +5,7 @@ export const profileInLocalStorage = (data) => {
 export const getLocalProfile = () => {
   const data = localStorage.getItem("ProfileInfo");
   if (!data) {
-    return [];
+    return null;
   } else {
     return JSON.parse(data);
   }
