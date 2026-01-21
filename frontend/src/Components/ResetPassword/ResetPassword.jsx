@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Lock } from "lucide-react";
 
 const ResetPassword = () => {
     const [newPass, setNewPass] = useState("");
@@ -19,61 +21,84 @@ const ResetPassword = () => {
                 body: JSON.stringify({ newPass, confirmPass, id }),
             });
             const data = await res.json();
-            toast(data.message);
-            setNewPass("");
-            setConfirmPass("");
+            if (res.ok) {
+                toast.success(data.message);
+                setNewPass("");
+                setConfirmPass("");
+            } else {
+                toast.error(data.message);
+            }
         } catch (error) {
             console.error(error);
-            toast("Something went wrong");
+            toast.error("Something went wrong");
         }
     };
 
     return (
-        <div className="min-h-screen bgDarkGray flex items-center justify-center px-4 py-16">
-            <div className="w-full max-w-md sm:max-w-lg rounded-md bg-background-card p-6 sm:p-8 shadow-lg text-white">
-                <h2 className="text-center text-2xl sm:text-3xl font-bold text-(--color-primary-cyan) mb-6">
-                    Reset Your Password
-                </h2>
-
-                <form className="space-y-4" onSubmit={handleSend}>
-                    <div className="space-y-2">
-                        <label className="block text-sm font-semibold text-gray-300">
-                            New Password
-                        </label>
-                        <input
-                            type="password"
-                            value={newPass}
-                            onChange={(e) => setNewPass(e.target.value)}
-                            placeholder="Enter new password"
-                            required
-                            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan) focus:border-[var(--color-accent-cyan)]"
-                        />
+        <div className="min-h-screen bg-app-bg flex items-center justify-center px-4 py-16 transition-colors duration-500">
+            <div className="w-full max-w-md bg-white border border-border-thin rounded-2xl shadow-xl p-8 sm:p-10 space-y-8 transform transition-all hover:shadow-2xl">
+                <div className="text-center space-y-2">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-primary/10 text-brand-primary mb-4">
+                        <Lock size={24} />
                     </div>
+                    <h2 className="text-3xl font-extrabold text-text-main tracking-tight">
+                        Reset Password
+                    </h2>
+                    <p className="text-text-sub text-sm">
+                        Create a strong password for your account
+                    </p>
+                </div>
 
-                    <div className="space-y-2">
-                        <label className="block text-sm font-semibold text-gray-300">
-                            Confirm Password
-                        </label>
-                        <input
-                            type="password"
-                            value={confirmPass}
-                            onChange={(e) => setConfirmPass(e.target.value)}
-                            placeholder="Confirm new password"
-                            required
-                            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan) focus:border-[var(--color-accent-cyan)]"
-                        />
+                <form className="space-y-6" onSubmit={handleSend}>
+                    <div className="space-y-5">
+                        <div className="relative group">
+                            <label className="block text-xs font-bold text-text-sub uppercase tracking-wider mb-2 group-focus-within:text-brand-primary transition-colors">
+                                New Password
+                            </label>
+                            <input
+                                type="password"
+                                value={newPass}
+                                onChange={(e) => setNewPass(e.target.value)}
+                                placeholder="Enter new password"
+                                required
+                                className="w-full rounded-xl border border-border-strong bg-surface-bg px-4 py-3 text-text-main placeholder-text-dim focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none font-medium"
+                            />
+                        </div>
+
+                        <div className="relative group">
+                            <label className="block text-xs font-bold text-text-sub uppercase tracking-wider mb-2 group-focus-within:text-brand-primary transition-colors">
+                                Confirm Password
+                            </label>
+                            <input
+                                type="password"
+                                value={confirmPass}
+                                onChange={(e) => setConfirmPass(e.target.value)}
+                                placeholder="Confirm new password"
+                                required
+                                className="w-full rounded-xl border border-border-strong bg-surface-bg px-4 py-3 text-text-main placeholder-text-dim focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none font-medium"
+                            />
+                        </div>
                     </div>
 
                     <button
                         type="submit"
-                        className="w-full rounded-lg bg-(--color-accent-cyan) py-2 text-white font-semibold shadow-sm hover:opacity-90 transition"
+                        className="w-full btn-primary text-sm sm:text-base shadow-lg shadow-brand-primary/30 hover:shadow-brand-primary/40"
                     >
                         Reset Password
                     </button>
+
+                    <div className="text-center">
+                        <Link
+                            to="/login"
+                            className="font-bold text-brand-primary hover:text-brand-secondary transition-colors"
+                        >
+                            Back to Login
+                        </Link>
+                    </div>
                 </form>
             </div>
 
-            <ToastContainer position="top-center" autoClose={4000} />
+            <ToastContainer position="top-right" autoClose={4000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
         </div>
     );
 };

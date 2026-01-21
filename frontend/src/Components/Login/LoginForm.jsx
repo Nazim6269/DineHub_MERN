@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { setAccessTokenCookie } from "../../helpers/setAccessToken";
 import { profileInLocalStorage } from "../../helpers/setLocalStorage";
 import { setProfileInfo } from "../../redux/actions/actionsCreator";
+import { LogIn } from "lucide-react";
 
 const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
@@ -33,12 +34,12 @@ const LoginForm = () => {
                 profileInLocalStorage(data.payload.user);
                 navigate("/");
             } else {
-                toast(data.message);
+                toast.error(data.message);
             }
             setValue({ email: "", password: "" });
         } catch (error) {
             console.error(error);
-            toast("Login failed");
+            toast.error("Login failed");
         }
     };
 
@@ -61,84 +62,109 @@ const LoginForm = () => {
             navigate("/");
         } catch (error) {
             console.error(error);
-            toast("Google login failed");
+            toast.error("Google login failed");
         }
     };
 
     const handleGoogleError = (error) => console.error(error);
 
     return (
-        <div className="min-h-screen bg-background-dark flex items-center justify-center px-4 py-12 sm:py-16">
-            <div className="w-full max-w-md sm:max-w-lg rounded-md bg-background-card p-6 sm:p-8 shadow-lg text-white">
-                <h2 className="text-center text-2xl sm:text-3xl font-bold text-(--color-primary-cyan) mb-6">
-                    Login
-                </h2>
+        <div className="min-h-screen bg-app-bg flex items-center justify-center px-4 py-12 sm:py-16 transition-colors duration-500">
+            <div className="w-full max-w-md bg-white border border-border-thin rounded-2xl shadow-xl p-8 sm:p-10 space-y-8 transform transition-all hover:shadow-2xl">
+                <div className="text-center space-y-2">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-primary/10 text-brand-primary mb-4">
+                        <LogIn size={24} />
+                    </div>
+                    <h2 className="text-3xl font-extrabold text-text-main tracking-tight">
+                        Welcome Back
+                    </h2>
+                    <p className="text-text-sub text-sm">
+                        Please sign in to your account
+                    </p>
+                </div>
 
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                    {/* Email */}
-                    <div className="space-y-2">
-                        <label className="block text-sm font-semibold text-gray-300">
-                            Email address
-                        </label>
-                        <input
-                            type="email"
-                            value={value.email}
-                            onChange={(e) => handleChange({ email: e.target.value })}
-                            placeholder="name@example.com"
-                            required
-                            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-white text-sm sm:text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan) focus:border-[var(--color-accent-cyan)]"
-                        />
+                <form className="space-y-6" onSubmit={handleSubmit}>
+                    <div className="space-y-5">
+                        <div className="relative group">
+                            <label className="block text-xs font-bold text-text-sub uppercase tracking-wider mb-2 group-focus-within:text-brand-primary transition-colors">
+                                Email Address
+                            </label>
+                            <input
+                                type="email"
+                                value={value.email}
+                                onChange={(e) => handleChange({ email: e.target.value })}
+                                placeholder="name@example.com"
+                                required
+                                className="w-full rounded-xl border border-border-strong bg-surface-bg px-4 py-3 text-text-main placeholder-text-dim focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none font-medium"
+                            />
+                        </div>
+
+                        <div className="relative group">
+                            <label className="block text-xs font-bold text-text-sub uppercase tracking-wider mb-2 group-focus-within:text-brand-primary transition-colors">
+                                Password
+                            </label>
+                            <input
+                                type="password"
+                                value={value.password}
+                                onChange={(e) => handleChange({ password: e.target.value })}
+                                placeholder="Enter your password"
+                                required
+                                className="w-full rounded-xl border border-border-strong bg-surface-bg px-4 py-3 text-text-main placeholder-text-dim focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none font-medium"
+                            />
+                        </div>
                     </div>
 
-                    {/* Password */}
-                    <div className="space-y-2">
-                        <label className="block text-sm font-semibold text-gray-300">
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            value={value.password}
-                            onChange={(e) => handleChange({ password: e.target.value })}
-                            placeholder="Enter your password"
-                            required
-                            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-3 py-2 text-white text-sm sm:text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan) focus:border-[var(--color-accent-cyan)]"
-                        />
+                    <div className="flex items-center justify-between mt-2">
+                        <div className="text-sm">
+                            <Link to="/forget-password" className="font-semibold text-brand-primary hover:text-brand-secondary transition-colors">
+                                Forgot Password?
+                            </Link>
+                        </div>
                     </div>
 
-                    {/* Login button */}
                     <button
                         type="submit"
-                        className="w-full rounded-lg bg-(--color-accent-cyan) text-white py-2 font-semibold hover:opacity-90 transition"
+                        className="w-full btn-primary text-sm sm:text-base shadow-lg shadow-brand-primary/30 hover:shadow-brand-primary/40"
                     >
-                        Login
+                        Sign In
                     </button>
 
-                    {/* Forget Password */}
-                    <div className="text-center font-semibold underline text-(--color-primary-cyan) text-sm sm:text-base">
-                        <Link to="/forget-password">Forget Password?</Link>
+                    <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                            <div className="w-full border-t border-border-strong"></div>
+                        </div>
+                        <div className="relative flex justify-center text-sm">
+                            <span className="px-2 bg-white text-text-dim font-medium">Or continue with</span>
+                        </div>
                     </div>
 
-                    {/* Signup */}
-                    <Link
-                        to="/signup"
-                        className="inline-block w-full mt-2 text-center rounded-lg border border-(--color-primary-cyan) text-(--color-primary-cyan) py-2 font-semibold hover:bg-(--color-primary-cyan) hover:text-white transition"
-                    >
-                        Create New Account
-                    </Link>
-                </form>
+                    <div className="flex flex-col gap-4">
+                        <div className="flex justify-center w-full">
+                            <GoogleOAuthProvider clientId={clientId}>
+                                <GoogleLogin
+                                    onSuccess={handleGoogleSuccess}
+                                    onError={handleGoogleError}
+                                    theme="filled_blue"
+                                    shape="circle"
+                                    width="100%"
+                                />
+                            </GoogleOAuthProvider>
+                        </div>
 
-                {/* Google login */}
-                <div className="mt-6 flex justify-center">
-                    <GoogleOAuthProvider clientId={clientId}>
-                        <GoogleLogin
-                            onSuccess={handleGoogleSuccess}
-                            onError={handleGoogleError}
-                        />
-                    </GoogleOAuthProvider>
-                </div>
+                        <div className="text-center text-sm text-text-sub">
+                            Don't have an account?{" "}
+                            <Link
+                                to="/signup"
+                                className="font-bold text-brand-primary hover:text-brand-secondary transition-colors"
+                            >
+                                Create an account
+                            </Link>
+                        </div>
+                    </div>
+                </form>
             </div>
 
-            <ToastContainer position="top-center" autoClose={4000} />
+            <ToastContainer position="top-right" autoClose={4000} hideProgressBar={false} newestOnTop closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
         </div>
     );
 };
