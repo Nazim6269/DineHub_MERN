@@ -7,7 +7,7 @@ import {
     User,
     X,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../helpers/logout";
@@ -21,6 +21,7 @@ const Navbar = () => {
     const { searchTerm } = useSelector((state) => state.filterReducer);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const profileRef = useRef(null);
 
     const cartCount = cart.reduce((total, item) => total + (item.quantity || 0), 0);
 
@@ -33,6 +34,19 @@ const Navbar = () => {
         setIsProfileOpen(false);
         navigate("/login");
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (profileRef.current && !profileRef.current.contains(event.target)) {
+                setIsProfileOpen(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     const navLinks = [
         { name: "Home", path: "/" },
@@ -103,7 +117,7 @@ const Navbar = () => {
                         </Link>
 
                         {profile && profile.email ? (
-                            <div className="relative">
+                            <div className="relative" ref={profileRef}>
                                 {/* Profile Button */}
                                 <button
                                     onClick={() => setIsProfileOpen(!isProfileOpen)}

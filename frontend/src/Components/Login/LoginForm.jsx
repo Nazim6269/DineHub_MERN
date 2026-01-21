@@ -70,7 +70,7 @@ const LoginForm = () => {
 
     return (
         <div className="min-h-screen bg-app-bg flex items-center justify-center px-4 py-12 sm:py-16 transition-colors duration-500">
-            <div className="w-full max-w-md bg-white border border-border-thin rounded-2xl shadow-xl p-8 sm:p-10 space-y-8 transform transition-all hover:shadow-2xl">
+            <div className="w-full max-w-md bg-white border border-border-thin rounded-md shadow-xl p-8 sm:p-10 space-y-8 transform transition-all hover:shadow-2xl">
                 <div className="text-center space-y-2">
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-brand-primary/10 text-brand-primary mb-4">
                         <LogIn size={24} />
@@ -95,7 +95,7 @@ const LoginForm = () => {
                                 onChange={(e) => handleChange({ email: e.target.value })}
                                 placeholder="name@example.com"
                                 required
-                                className="w-full rounded-xl border border-border-strong bg-surface-bg px-4 py-3 text-text-main placeholder-text-dim focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none font-medium"
+                                className="w-full rounded-md border border-border-strong bg-surface-bg px-4 py-3 text-text-main placeholder-text-dim focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none font-medium"
                             />
                         </div>
 
@@ -109,7 +109,7 @@ const LoginForm = () => {
                                 onChange={(e) => handleChange({ password: e.target.value })}
                                 placeholder="Enter your password"
                                 required
-                                className="w-full rounded-xl border border-border-strong bg-surface-bg px-4 py-3 text-text-main placeholder-text-dim focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none font-medium"
+                                className="w-full rounded-md border border-border-strong bg-surface-bg px-4 py-3 text-text-main placeholder-text-dim focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all outline-none font-medium"
                             />
                         </div>
                     </div>

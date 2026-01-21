@@ -1,6 +1,7 @@
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -21,15 +22,15 @@ const Contact = () => {
     };
 
     return (
-        <div className="min-h-screen bg-background-dark text-text-primary py-16 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-app-bg text-text-main py-16 px-4 sm:px-6 lg:px-8 transition-colors duration-500">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 text-text-main ">
-                        Get in Touch
+                <div className="text-center mb-16 space-y-4">
+                    <h1 className="text-4xl sm:text-5xl font-black text-text-main uppercase tracking-tight">
+                        Get in <span className="text-brand-primary">Touch</span>
                     </h1>
-                    <p className="text-text-secondary max-w-2xl mx-auto text-lg">
-                        Have a question or just want to say hi? We&apos;d love to hear from you.
+                    <p className="text-text-sub max-w-2xl mx-auto text-lg font-medium">
+                        Have a question or just want to say hi? We'd love to hear from you.
                         Our team is always here to help you with your cravings!
                     </p>
                 </div>
@@ -37,63 +38,66 @@ const Contact = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     {/* Contact Information */}
                     <div className="space-y-8">
-                        <div className="bg-background-card rounded-md p-8 border border-white/10 hover:border-(--color-accent-cyan)/50 transition-all duration-300">
-                            <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-                            <div className="space-y-6">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-md bg-(--color-accent-cyan)/10 flex items-center justify-center text-(--color-accent-cyan)">
-                                        <Phone size={24} />
+                        <div className="bg-white rounded-md p-8 border border-border-thin shadow-lg hover:shadow-xl transition-all duration-300">
+                            <h2 className="text-2xl font-black mb-8 text-text-main">Contact Information</h2>
+                            <div className="space-y-8">
+                                <div className="flex items-center gap-6 group">
+                                    <div className="w-14 h-14 rounded-md bg-brand-primary/10 flex items-center justify-center text-brand-primary group-hover:scale-110 transition-transform duration-300">
+                                        <Phone size={28} />
                                     </div>
                                     <div>
-                                        <p className="text-text-muted text-sm uppercase font-bold tracking-wider">Phone</p>
-                                        <p className="text-lg font-medium">+1 (234) 567-890</p>
+                                        <p className="text-text-dim text-xs uppercase font-black tracking-widest mb-1">Phone</p>
+                                        <p className="text-lg font-bold text-text-main group-hover:text-brand-primary transition-colors">+1 (234) 567-890</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-md bg-(--color-primary-blue)/10 flex items-center justify-center text-(--color-primary-blue)">
-                                        <Mail size={24} />
+                                <div className="flex items-center gap-6 group">
+                                    <div className="w-14 h-14 rounded-md bg-brand-secondary/10 flex items-center justify-center text-brand-secondary group-hover:scale-110 transition-transform duration-300">
+                                        <Mail size={28} />
                                     </div>
                                     <div>
-                                        <p className="text-text-muted text-sm uppercase font-bold tracking-wider">Email</p>
-                                        <p className="text-lg font-medium">hello@dinehub.com</p>
+                                        <p className="text-text-dim text-xs uppercase font-black tracking-widest mb-1">Email</p>
+                                        <p className="text-lg font-bold text-text-main group-hover:text-brand-secondary transition-colors">hello@dinehub.com</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-md bg-purple-500/10 flex items-center justify-center text-purple-400">
-                                        <MapPin size={24} />
+                                <div className="flex items-center gap-6 group">
+                                    <div className="w-14 h-14 rounded-md bg-brand-accent/10 flex items-center justify-center text-brand-accent group-hover:scale-110 transition-transform duration-300">
+                                        <MapPin size={28} />
                                     </div>
                                     <div>
-                                        <p className="text-text-muted text-sm uppercase font-bold tracking-wider">Location</p>
-                                        <p className="text-lg font-medium">123 Foodie Street, Gourmet City</p>
+                                        <p className="text-text-dim text-xs uppercase font-black tracking-widest mb-1">Location</p>
+                                        <p className="text-lg font-bold text-text-main group-hover:text-brand-accent transition-colors">123 Foodie Street, Gourmet City</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Simple Map Placeholder */}
-                        <div className="rounded-md overflow-hidden h-64 border border-white/10 relative group">
+                        {/* Map Placeholder */}
+                        <div className="rounded-md overflow-hidden h-64 border border-border-thin relative group shadow-lg">
                             <img
                                 src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1000"
                                 alt="Map"
-                                className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                                className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 hover:scale-105"
                             />
-                            <div className="absolute inset-0 bg-background-dark/40 flex items-center justify-center">
-                                <div className="bg-background-card px-6 py-3 rounded-full border border-white/20 shadow-2xl">
-                                    <p className="font-bold text-sm">Find us on Google Maps</p>
+                            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500 flex items-center justify-center pointer-events-none">
+                                <div className="bg-white/90 backdrop-blur-md px-6 py-3 rounded-full border border-white/50 shadow-2xl transform group-hover:scale-110 transition-transform duration-500">
+                                    <p className="font-black text-sm text-text-main flex items-center gap-2">
+                                        <MapPin size={16} className="text-brand-primary" />
+                                        Find us on Google Maps
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* Contact Form */}
-                    <div className="bg-background-card rounded-md p-8 border border-white/10">
-                        <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
+                    <div className="bg-white rounded-md p-8 border border-border-thin shadow-xl">
+                        <h2 className="text-2xl font-black mb-8 text-text-main">Send us a Message</h2>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-text-secondary">Full Name</label>
+                                    <label className="text-xs font-bold text-text-sub uppercase tracking-wider">Full Name</label>
                                     <input
                                         type="text"
                                         name="name"
@@ -101,11 +105,11 @@ const Contact = () => {
                                         onChange={handleChange}
                                         placeholder="John Doe"
                                         required
-                                        className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 outline-none focus:border-(--color-accent-cyan) transition-all"
+                                        className="w-full bg-surface-bg border border-border-strong rounded-md px-4 py-3 outline-none focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all font-medium text-text-main placeholder-text-dim"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-sm font-medium text-text-secondary">Email Address</label>
+                                    <label className="text-xs font-bold text-text-sub uppercase tracking-wider">Email Address</label>
                                     <input
                                         type="email"
                                         name="email"
@@ -113,13 +117,13 @@ const Contact = () => {
                                         onChange={handleChange}
                                         placeholder="john@example.com"
                                         required
-                                        className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 outline-none focus:border-(--color-accent-cyan) transition-all"
+                                        className="w-full bg-surface-bg border border-border-strong rounded-md px-4 py-3 outline-none focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all font-medium text-text-main placeholder-text-dim"
                                     />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-text-secondary">Subject</label>
+                                <label className="text-xs font-bold text-text-sub uppercase tracking-wider">Subject</label>
                                 <input
                                     type="text"
                                     name="subject"
@@ -127,12 +131,12 @@ const Contact = () => {
                                     onChange={handleChange}
                                     placeholder="Inquiry about..."
                                     required
-                                    className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 outline-none focus:border-(--color-accent-cyan) transition-all"
+                                    className="w-full bg-surface-bg border border-border-strong rounded-md px-4 py-3 outline-none focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all font-medium text-text-main placeholder-text-dim"
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-sm font-medium text-text-secondary">Message</label>
+                                <label className="text-xs font-bold text-text-sub uppercase tracking-wider">Message</label>
                                 <textarea
                                     name="message"
                                     value={formData.message}
@@ -140,22 +144,22 @@ const Contact = () => {
                                     placeholder="How can we help you?"
                                     required
                                     rows={5}
-                                    className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 outline-none focus:border-(--color-accent-cyan) transition-all resize-none"
+                                    className="w-full bg-surface-bg border border-border-strong rounded-md px-4 py-3 outline-none focus:bg-white focus:border-brand-primary focus:ring-4 focus:ring-brand-primary/10 transition-all font-medium text-text-main placeholder-text-dim resize-none"
                                 />
                             </div>
 
                             <button
                                 type="submit"
-                                className="w-full bg-app-bg py-4 rounded-md font-bold text-black border transition-all duration-300 flex items-center justify-center gap-2"
+                                className="w-full bg-brand-primary text-white py-4 rounded-md font-black uppercase tracking-widest shadow-lg shadow-brand-primary/20 hover:shadow-brand-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2"
                             >
                                 Send Message
-                                <Send size={18} />
+                                <Send size={20} />
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-            <ToastContainer position="bottom-right" theme="dark" />
+            <ToastContainer position="bottom-right" theme="light" />
         </div>
     );
 };
