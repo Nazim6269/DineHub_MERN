@@ -1,16 +1,16 @@
 import { combineReducers } from "redux";
 import {
-  cartReducer,
-  fetchReducer,
-  filterReducer,
-  profileReducer,
-  selectedProductReducer,
+ cartReducer,
+ fetchReducer,
+ filterReducer,
+ profileReducer,
+ selectedProductReducer,
 } from "./cardReducer";
 
 export const rootReducer = combineReducers({
-  fetchReducer,
-  cartReducer,
-  profileReducer,
-  selectedProductReducer,
-  filterReducer,
+ fetchReducer,
+ cartReducer,
+ profileReducer,
+ selectedProductReducer,
+ filterReducer,
 });

@@ -54,7 +54,7 @@
   }
 
   .card-premium {
-    @apply bg-card-bg border border-border-thin rounded-[2.5rem] shadow-sm hover:shadow-xl hover:shadow-text-main/5 transition-all duration-500;
+    @apply bg-card-bg border border-border-thin rounded-md shadow-sm hover:shadow-xl hover:shadow-text-main/5 transition-all duration-500;
   }
 
   .input-standard {
@@ -62,7 +62,7 @@
   }
 
   /* Keep legacy classes for backward compatibility during refactor */
-  .primaryBtnUi {
+  /* .primaryBtnUi {
     @apply btn-primary;
   }
 
@@ -72,5 +72,5 @@
 
   .cardContainer {
     @apply card-premium;
-  }
+  } */
 }

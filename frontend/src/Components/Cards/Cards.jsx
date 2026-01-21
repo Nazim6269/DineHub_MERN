@@ -42,7 +42,7 @@ const Cards = () => {
               return (
                 <div
                   key={_id}
-                  className="group relative bg-card-bg border border-border-thin rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-brand-primary/30 hover:shadow-xl hover:shadow-text-main/5"
+                  className="group relative bg-card-bg border border-border-thin rounded-md overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-brand-primary/30 hover:shadow-xl hover:shadow-text-main/5"
                 >
                   {/* Card Image Wrapper */}
                   <div className="relative h-64 overflow-hidden">
@@ -53,11 +53,11 @@ const Cards = () => {
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                     </Link>
-                    <div className="absolute top-5 right-5 bg-white/70 backdrop-blur-md px-3 py-1.5 rounded-xl border border-border-strong flex items-center gap-1.5 shadow-sm">
+                    <div className="absolute top-5 right-5 bg-white/70 backdrop-blur-md px-3 py-1.5 rounded-md border border-border-strong flex items-center gap-1.5 shadow-sm">
                       <Star size={14} className="text-status-warning fill-current" />
                       <span className="text-xs font-black text-text-main">4.8</span>
                     </div>
-                    <div className="absolute bottom-5 left-5 bg-brand-primary text-text-on-brand px-4 py-1.5 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg">
+                    <div className="absolute bottom-5 left-5 bg-brand-primary text-text-on-brand px-4 py-1.5 rounded-md text-[10px] font-black uppercase tracking-widest shadow-lg">
                       {CategoryName}
                     </div>
                   </div>

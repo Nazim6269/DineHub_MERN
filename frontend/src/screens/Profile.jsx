@@ -19,7 +19,7 @@ const Profile = () => {
                                 alt={profile.name}
                                 className="w-32 h-32 rounded-3xl border-4 border-background-dark object-cover shadow-2xl"
                             />
-                            <div className="absolute -bottom-2 -right-2 bg-(--color-accent-cyan) text-black p-1.5 rounded-xl border-4 border-background-dark">
+                            <div className="absolute -bottom-2 -right-2 bg-(--color-accent-cyan) text-black p-1.5 rounded-md border-4 border-background-dark">
                                 <BadgeCheck size={20} />
                             </div>
                         </div>
@@ -90,9 +90,9 @@ const Profile = () => {
                                 </div>
                                 <h3 className="text-lg font-bold">No orders yet</h3>
                                 <p className="text-text-secondary text-sm max-w-xs">
-                                    Looks like you haven't ordered anything from DineHub yet. Start exploring our menu!
+                                    Looks like you haven&apos;t ordered anything from DineHub yet. Start exploring our menu!
                                 </p>
-                                <button className="mt-6 px-8 py-3 rounded-xl bg-(--color-accent-cyan) text-black font-bold hover:shadow-[0_0_20px_rgba(0,217,192,0.3)] transition-all">
+                                <button className="mt-6 px-8 py-3 rounded-md bg-(--color-accent-cyan) text-black font-bold hover:shadow-[0_0_20px_rgba(0,217,192,0.3)] transition-all">
                                     Browse Menu
                                 </button>
                             </div>

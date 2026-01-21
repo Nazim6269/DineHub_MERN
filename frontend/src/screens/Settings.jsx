@@ -38,9 +38,9 @@ const Settings = () => {
                         ].map((tab) => (
                             <button
                                 key={tab.id}
-                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${tab.id === 'general'
-                                        ? 'bg-(--color-accent-cyan)/10 text-(--color-accent-cyan) border border-(--color-accent-cyan)/20'
-                                        : 'text-text-secondary hover:bg-white/5'
+                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-md transition-all ${tab.id === 'general'
+                                    ? 'bg-(--color-accent-cyan)/10 text-(--color-accent-cyan) border border-(--color-accent-cyan)/20'
+                                    : 'text-text-secondary hover:bg-white/5'
                                     }`}
                             >
                                 <tab.icon size={20} />
@@ -60,7 +60,7 @@ const Settings = () => {
                                     <input
                                         type="text"
                                         defaultValue={profile.name}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-(--color-accent-cyan)"
+                                        className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 outline-none focus:border-(--color-accent-cyan)"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -69,12 +69,12 @@ const Settings = () => {
                                         type="email"
                                         disabled
                                         value={profile.email}
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none opacity-50 cursor-not-allowed"
+                                        className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 outline-none opacity-50 cursor-not-allowed"
                                     />
                                 </div>
                                 <button
                                     type="submit"
-                                    className="bg-(--color-accent-cyan) text-black font-bold px-6 py-2.5 rounded-xl hover:shadow-[0_0_15px_rgba(0,217,192,0.3)] transition-all"
+                                    className="bg-(--color-accent-cyan) text-black font-bold px-6 py-2.5 rounded-md hover:shadow-[0_0_15px_rgba(0,217,192,0.3)] transition-all"
                                 >
                                     Save Changes
                                 </button>
@@ -91,7 +91,7 @@ const Settings = () => {
                                         <input
                                             type={showPassword ? "text" : "password"}
                                             placeholder="Enter new password"
-                                            className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 outline-none focus:border-(--color-accent-cyan) pr-12"
+                                            className="w-full bg-white/5 border border-white/10 rounded-md px-4 py-3 outline-none focus:border-(--color-accent-cyan) pr-12"
                                         />
                                         <button
                                             onClick={() => setShowPassword(!showPassword)}
