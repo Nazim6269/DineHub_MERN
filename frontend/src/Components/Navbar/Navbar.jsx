@@ -83,7 +83,7 @@ const Navbar = () => {
                             placeholder="Search dishes..."
                             value={searchTerm}
                             onChange={handleSearch}
-                            className="w-full rounded-2xl border border-border-thin bg-surface-bg py-3 pl-12 pr-6 text-sm text-text-main outline-none transition-all focus:border-brand-primary/50 focus:bg-app-bg placeholder:text-text-dim font-bold"
+                            className="w-full rounded-md border border-border-thin bg-surface-bg py-3 pl-12 pr-6 text-sm text-text-main outline-none transition-all focus:border-brand-primary/50 focus:bg-app-bg placeholder:text-text-dim font-bold"
                         />
                     </div>
 
@@ -92,7 +92,7 @@ const Navbar = () => {
                         {/* Cart */}
                         <Link
                             to="/cart"
-                            className="relative p-2.5 rounded-2xl bg-surface-bg border border-border-thin text-text-sub transition-all hover:text-brand-primary hover:bg-card-bg active:scale-90"
+                            className="relative p-2.5 rounded-md bg-surface-bg border border-border-thin text-text-sub transition-all hover:text-brand-primary hover:bg-card-bg active:scale-90"
                         >
                             <ShoppingCart size={22} />
                             {cartCount > 0 && (
@@ -107,7 +107,7 @@ const Navbar = () => {
                                 {/* Profile Button */}
                                 <button
                                     onClick={() => setIsProfileOpen(!isProfileOpen)}
-                                    className="flex items-center gap-3 rounded-2xl border border-border-thin bg-surface-bg p-1.5 transition-all hover:bg-card-bg"
+                                    className="flex items-center gap-3 rounded-md border border-border-thin bg-surface-bg p-1.5 transition-all hover:bg-card-bg"
                                 >
                                     <img
                                         src={profile.picture || "https://avatar.iran.liara.run/public"}
@@ -166,7 +166,7 @@ const Navbar = () => {
                         ) : (
                             <Link
                                 to="/login"
-                                className="rounded-2xl bg-brand-primary px-8 py-3 text-xs font-black uppercase tracking-widest text-text-on-brand transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-primary/10"
+                                className="rounded-md bg-brand-primary px-8 py-3 text-xs font-black uppercase tracking-widest text-text-on-brand transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-primary/10"
                             >
                                 Login
                             </Link>
@@ -188,7 +188,7 @@ const Navbar = () => {
                                     placeholder="Find your favorite dish..."
                                     value={searchTerm}
                                     onChange={handleSearch}
-                                    className="w-full rounded-2xl border border-border-thin bg-surface-bg py-3.5 pl-12 pr-6 text-sm text-text-main font-bold"
+                                    className="w-full rounded-md border border-border-thin bg-surface-bg py-3.5 pl-12 pr-6 text-sm text-text-main font-bold"
                                 />
                             </div>
                             <div className="flex flex-col gap-2">

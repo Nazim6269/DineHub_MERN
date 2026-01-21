@@ -83,7 +83,7 @@ const Cards = () => {
                       </div>
                       <button
                         onClick={() => dispatch(addToCart(item))}
-                        className="p-4 rounded-2xl bg-app-bg border border-border-thin text-text-main hover:bg-brand-primary hover:text-text-on-brand hover:border-transparent transition-all active:scale-90 shadow-sm"
+                        className="p-4 rounded-md bg-app-bg border border-border-thin text-text-main hover:bg-brand-primary hover:text-text-on-brand hover:border-transparent transition-all active:scale-90 shadow-sm"
                       >
                         <ShoppingBag size={20} />
                       </button>
@@ -92,7 +92,7 @@ const Cards = () => {
                     <Link
                       to={`/cardDetails/${_id}`}
                       onClick={() => dispatch(setSelectProduct([item]))}
-                      className="block w-full text-center py-4 rounded-2xl border-2 border-border-thin bg-transparent text-xs font-black uppercase tracking-[0.2em] text-text-dim hover:border-brand-primary hover:text-brand-primary transition-all"
+                      className="block w-full text-center py-4 rounded-md border-2 border-border-thin bg-transparent text-xs font-black uppercase tracking-[0.2em] text-text-dim hover:border-brand-primary hover:text-brand-primary transition-all"
                     >
                       Details View
                     </Link>

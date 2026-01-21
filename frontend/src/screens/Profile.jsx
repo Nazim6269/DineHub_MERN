@@ -11,13 +11,13 @@ const Profile = () => {
             <div className="max-w-4xl mx-auto">
                 {/* Profile Header */}
                 <div className="relative mb-8">
-                    <div className="h-48 w-full rounded-3xl bg-linear-to-r from-(--color-primary-cyan)/20 via-(--color-primary-blue)/20 to-purple-500/20 border border-white/10" />
+                    <div className="h-48 w-full rounded-md bg-linear-to-r from-(--color-primary-cyan)/20 via-(--color-primary-blue)/20 to-purple-500/20 border border-white/10" />
                     <div className="absolute -bottom-16 left-8 flex items-end gap-6">
                         <div className="relative">
                             <img
                                 src={profile.picture || "https://avatar.iran.liara.run/public"}
                                 alt={profile.name}
-                                className="w-32 h-32 rounded-3xl border-4 border-background-dark object-cover shadow-2xl"
+                                className="w-32 h-32 rounded-md border-4 border-background-dark object-cover shadow-2xl"
                             />
                             <div className="absolute -bottom-2 -right-2 bg-(--color-accent-cyan) text-black p-1.5 rounded-md border-4 border-background-dark">
                                 <BadgeCheck size={20} />
@@ -38,7 +38,7 @@ const Profile = () => {
                 <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Info Side */}
                     <div className="space-y-6">
-                        <div className="bg-background-card rounded-2xl p-6 border border-white/10">
+                        <div className="bg-background-card rounded-md p-6 border border-white/10">
                             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                                 <UserIcon size={20} className="text-(--color-accent-cyan)" />
                                 Personal Info
@@ -61,7 +61,7 @@ const Profile = () => {
                             </div>
                         </div>
 
-                        <div className="bg-background-card rounded-2xl p-6 border border-white/10">
+                        <div className="bg-background-card rounded-md p-6 border border-white/10">
                             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
                                 <Calendar size={20} className="text-(--color-primary-blue)" />
                                 Recent Activity
@@ -72,7 +72,7 @@ const Profile = () => {
 
                     {/* Orders/Details Side */}
                     <div className="md:col-span-2 space-y-6">
-                        <div className="bg-background-card rounded-2xl p-8 border border-white/10">
+                        <div className="bg-background-card rounded-md p-8 border border-white/10">
                             <div className="flex items-center justify-between mb-8">
                                 <h2 className="text-2xl font-bold flex items-center gap-3">
                                     <Package size={24} className="text-purple-400" />

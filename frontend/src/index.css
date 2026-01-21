@@ -46,11 +46,11 @@
   /* Reusable Modular Utilities */
 
   .btn-primary {
-    @apply bg-brand-primary text-text-on-brand px-8 py-3 rounded-2xl font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-primary/20;
+    @apply bg-brand-primary text-text-on-brand px-8 py-3 rounded-md font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-primary/20;
   }
 
   .btn-secondary {
-    @apply bg-white border border-border-strong text-text-main px-8 py-3 rounded-2xl font-black uppercase tracking-widest transition-all hover:bg-surface-bg active:scale-95;
+    @apply bg-white border border-border-strong text-text-main px-8 py-3 rounded-md font-black uppercase tracking-widest transition-all hover:bg-surface-bg active:scale-95;
   }
 
   .card-premium {
@@ -58,7 +58,7 @@
   }
 
   .input-standard {
-    @apply bg-surface-bg border border-border-thin rounded-2xl px-6 py-4 text-sm text-text-main placeholder:text-text-dim outline-none transition-all focus:border-brand-primary/50 focus:bg-white font-bold;
+    @apply bg-surface-bg border border-border-thin rounded-md px-6 py-4 text-sm text-text-main placeholder:text-text-dim outline-none transition-all focus:border-brand-primary/50 focus:bg-white font-bold;
   }
 
   /* Keep legacy classes for backward compatibility during refactor */

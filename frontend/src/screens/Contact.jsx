@@ -37,11 +37,11 @@ const Contact = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     {/* Contact Information */}
                     <div className="space-y-8">
-                        <div className="bg-background-card rounded-3xl p-8 border border-white/10 hover:border-(--color-accent-cyan)/50 transition-all duration-300">
+                        <div className="bg-background-card rounded-md p-8 border border-white/10 hover:border-(--color-accent-cyan)/50 transition-all duration-300">
                             <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
                             <div className="space-y-6">
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-(--color-accent-cyan)/10 flex items-center justify-center text-(--color-accent-cyan)">
+                                    <div className="w-12 h-12 rounded-md bg-(--color-accent-cyan)/10 flex items-center justify-center text-(--color-accent-cyan)">
                                         <Phone size={24} />
                                     </div>
                                     <div>
@@ -51,7 +51,7 @@ const Contact = () => {
                                 </div>
 
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-(--color-primary-blue)/10 flex items-center justify-center text-(--color-primary-blue)">
+                                    <div className="w-12 h-12 rounded-md bg-(--color-primary-blue)/10 flex items-center justify-center text-(--color-primary-blue)">
                                         <Mail size={24} />
                                     </div>
                                     <div>
@@ -61,7 +61,7 @@ const Contact = () => {
                                 </div>
 
                                 <div className="flex items-center gap-4">
-                                    <div className="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-400">
+                                    <div className="w-12 h-12 rounded-md bg-purple-500/10 flex items-center justify-center text-purple-400">
                                         <MapPin size={24} />
                                     </div>
                                     <div>
@@ -73,7 +73,7 @@ const Contact = () => {
                         </div>
 
                         {/* Simple Map Placeholder */}
-                        <div className="rounded-3xl overflow-hidden h-64 border border-white/10 relative group">
+                        <div className="rounded-md overflow-hidden h-64 border border-white/10 relative group">
                             <img
                                 src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=1000"
                                 alt="Map"
@@ -88,7 +88,7 @@ const Contact = () => {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="bg-background-card rounded-3xl p-8 border border-white/10">
+                    <div className="bg-background-card rounded-md p-8 border border-white/10">
                         <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

@@ -147,7 +147,7 @@ const SingleCategory = () => {
                                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                                 />
                                             </Link>
-                                            <div className="absolute top-4 right-4 bg-app-bg/90 backdrop-blur-md px-4 py-2 rounded-2xl border border-border-thin font-black text-text-main text-sm shadow-xl">
+                                            <div className="absolute top-4 right-4 bg-app-bg/90 backdrop-blur-md px-4 py-2 rounded-md border border-border-thin font-black text-text-main text-sm shadow-xl">
                                                 Tk {item.options[0].half || item.options[0].full}
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@ const SingleCategory = () => {
 
                                             <Link
                                                 to={`/cardDetails/${item._id}`}
-                                                className="block w-full text-center py-4 rounded-2xl bg-app-bg border border-border-thin font-extrabold text-[10px] uppercase tracking-[0.2em] text-text-dim transition-all hover:bg-brand-primary hover:text-text-on-brand hover:border-transparent hover:shadow-lg hover:shadow-brand-primary/20"
+                                                className="block w-full text-center py-4 rounded-md bg-app-bg border border-border-thin font-extrabold text-[10px] uppercase tracking-[0.2em] text-text-dim transition-all hover:bg-brand-primary hover:text-text-on-brand hover:border-transparent hover:shadow-lg hover:shadow-brand-primary/20"
                                             >
                                                 Details View
                                             </Link>
@@ -192,7 +192,7 @@ const SingleCategory = () => {
                                 </p>
                                 <button
                                     onClick={() => window.location.reload()}
-                                    className="mt-10 bg-text-main text-text-on-brand px-8 py-3 rounded-2xl font-black uppercase text-xs tracking-widest hover:scale-105 transition-all shadow-xl"
+                                    className="mt-10 bg-text-main text-text-on-brand px-8 py-3 rounded-md font-black uppercase text-xs tracking-widest hover:scale-105 transition-all shadow-xl"
                                 >
                                     Clear all filters
                                 </button>

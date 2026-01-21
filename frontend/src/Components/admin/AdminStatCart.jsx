@@ -22,7 +22,7 @@ const AdminStatCart = ({ title, value, rate, icon }) => {
             className="
  bg-background-card
  shadow-lg
- rounded-2xl
+ rounded-md
  p-6
  border border-[rgba(255,255,255,0.08)]
  "

@@ -77,17 +77,17 @@ const CardDetails = () => {
 
                         {/* Quick Stats */}
                         <div className="grid grid-cols-3 gap-4 mt-8">
-                            <div className="bg-card-bg border border-border-thin p-6 rounded-3xl text-center">
+                            <div className="bg-card-bg border border-border-thin p-6 rounded-md text-center">
                                 <TrendingUp size={24} className="text-brand-primary mx-auto mb-2" />
                                 <p className="text-xs font-bold text-text-dim uppercase">Popular</p>
                                 <p className="text-sm font-bold text-text-main mt-1">#1 in Category</p>
                             </div>
-                            <div className="bg-card-bg border border-border-thin p-6 rounded-3xl text-center">
+                            <div className="bg-card-bg border border-border-thin p-6 rounded-md text-center">
                                 <MessageSquare size={24} className="text-brand-secondary mx-auto mb-2" />
                                 <p className="text-xs font-bold text-text-dim uppercase">Feedback</p>
                                 <p className="text-sm font-bold text-text-main mt-1">98% Satisfied</p>
                             </div>
-                            <div className="bg-card-bg border border-border-thin p-6 rounded-3xl text-center">
+                            <div className="bg-card-bg border border-border-thin p-6 rounded-md text-center">
                                 <Info size={24} className="text-brand-accent mx-auto mb-2" />
                                 <p className="text-xs font-bold text-text-dim uppercase">Portion</p>
                                 <p className="text-sm font-bold text-text-main mt-1">Standard Size</p>

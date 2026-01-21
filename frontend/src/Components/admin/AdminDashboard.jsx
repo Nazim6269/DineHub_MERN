@@ -194,7 +194,7 @@ const AdminDashboard = () => {
                             className="
  lg:col-span-2
  bg-background-card
- rounded-2xl
+ rounded-md
  p-6
  border border-[rgba(255,255,255,0.08)]
  "
@@ -289,7 +289,7 @@ const AdminDashboard = () => {
                         <div
                             className="
  bg-background-card
- rounded-2xl
+ rounded-md
  p-6
  border border-[rgba(255,255,255,0.08)]
  "
@@ -376,7 +376,7 @@ const AdminDashboard = () => {
                         <div
                             className="
  bg-background-card
- rounded-2xl
+ rounded-md
  p-6
  border border-[rgba(255,255,255,0.08)]
  "
@@ -422,7 +422,7 @@ const AdminDashboard = () => {
                         <div
                             className="
  bg-background-card
- rounded-2xl
+ rounded-md
  p-6
  border border-[rgba(255,255,255,0.08)]
  "
@@ -492,12 +492,12 @@ const AdminDashboard = () => {
                                             {/* Status = availability */}
                                             <div
                                                 className={`text-xs px-2 py-1 rounded-full inline-block ${order.status === "completed"
-                                                        ? "bg-[rgba(0,217,192,0.25)] text-(--color-accent-cyan)"
-                                                        : order.status === "processing"
-                                                            ? "bg-[rgba(0,217,192,0.15)] text-(--color-accent-cyan)"
-                                                            : order.status === "shipped"
-                                                                ? "bg-[rgba(0,217,192,0.1)] text-text-secondary"
-                                                                : "bg-[rgba(0,217,192,0.05)] text-text-muted"
+                                                    ? "bg-[rgba(0,217,192,0.25)] text-(--color-accent-cyan)"
+                                                    : order.status === "processing"
+                                                        ? "bg-[rgba(0,217,192,0.15)] text-(--color-accent-cyan)"
+                                                        : order.status === "shipped"
+                                                            ? "bg-[rgba(0,217,192,0.1)] text-text-secondary"
+                                                            : "bg-[rgba(0,217,192,0.05)] text-text-muted"
                                                     }`}
                                             >
                                                 {order.status}

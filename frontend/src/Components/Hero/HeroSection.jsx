@@ -75,7 +75,7 @@ const HeroSection = () => {
           <div className="md:w-1/2 w-full flex justify-center">
             <div
               className="
-                  relative rounded-3xl overflow-hidden
+                  relative rounded-md overflow-hidden
                   bg-app-bg
                   border border-border-thin shadow-2xl shadow-text-main/5
                 "

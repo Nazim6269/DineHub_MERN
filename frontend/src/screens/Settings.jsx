@@ -52,7 +52,7 @@ const Settings = () => {
                     {/* Content Area */}
                     <div className="lg:col-span-2 space-y-6">
                         {/* General Settings */}
-                        <div className="bg-background-card rounded-2xl p-6 border border-white/10">
+                        <div className="bg-background-card rounded-md p-6 border border-white/10">
                             <h2 className="text-xl font-bold mb-6">Profile Settings</h2>
                             <form className="space-y-4" onSubmit={handleUpdate}>
                                 <div className="space-y-2">
@@ -82,7 +82,7 @@ const Settings = () => {
                         </div>
 
                         {/* Password/Security */}
-                        <div className="bg-background-card rounded-2xl p-6 border border-white/10">
+                        <div className="bg-background-card rounded-md p-6 border border-white/10">
                             <h2 className="text-xl font-bold mb-6">Security</h2>
                             <div className="space-y-4">
                                 <div className="relative">
@@ -108,7 +108,7 @@ const Settings = () => {
                         </div>
 
                         {/* Notifications */}
-                        <div className="bg-background-card rounded-2xl p-6 border border-white/10">
+                        <div className="bg-background-card rounded-md p-6 border border-white/10">
                             <h2 className="text-xl font-bold mb-6">Notifications</h2>
                             <div className="space-y-4">
                                 {Object.entries(notifications).map(([key, value]) => (

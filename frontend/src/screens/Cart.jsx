@@ -39,7 +39,7 @@ const Cart = () => {
                 </div>
                 <h2 className="text-2xl font-black text-text-main uppercase tracking-tight mb-2">Your cart is empty</h2>
                 <p className="text-text-sub font-bold text-sm mb-8 uppercase tracking-widest">Time to add some delicious food!</p>
-                <Link to="/" className="bg-brand-primary text-text-on-brand px-8 py-3 rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-all active:scale-95 shadow-lg shadow-brand-primary/20">
+                <Link to="/" className="bg-brand-primary text-text-on-brand px-8 py-3 rounded-md font-black uppercase tracking-widest hover:scale-105 transition-all active:scale-95 shadow-lg shadow-brand-primary/20">
                     Browse Menu
                 </Link>
             </div>
@@ -75,12 +75,12 @@ const Cart = () => {
                                 return (
                                     <div
                                         key={_id}
-                                        className="group bg-app-bg border border-border-thin hover:border-brand-primary/30 rounded-3xl p-5 transition-all duration-300 shadow-sm"
+                                        className="group bg-app-bg border border-border-thin hover:border-brand-primary/30 rounded-md p-5 transition-all duration-300 shadow-sm"
                                     >
                                         <div className="flex flex-col sm:grid sm:grid-cols-12 items-center gap-4">
                                             {/* Product Info */}
                                             <div className="col-span-6 flex items-center gap-6 w-full">
-                                                <div className="relative overflow-hidden rounded-2xl h-24 w-24 shrink-0 shadow-md">
+                                                <div className="relative overflow-hidden rounded-md h-24 w-24 shrink-0 shadow-md">
                                                     <img
                                                         className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-500"
                                                         src={img}
@@ -104,7 +104,7 @@ const Cart = () => {
                                             </div>
 
                                             {/* Quantity Controls */}
-                                            <div className="col-span-2 flex items-center justify-center gap-4 bg-card-bg rounded-2xl p-1.5 border border-border-thin">
+                                            <div className="col-span-2 flex items-center justify-center gap-4 bg-card-bg rounded-md p-1.5 border border-border-thin">
                                                 <button
                                                     onClick={() => dispatch(decrementItem(_id))}
                                                     className="w-8 h-8 flex items-center justify-center text-text-dim hover:text-brand-primary transition"
@@ -207,7 +207,7 @@ const Cart = () => {
                         </div>
 
                         {/* Support Box */}
-                        <div className="bg-app-bg rounded-3xl p-8 border border-border-thin shadow-sm">
+                        <div className="bg-app-bg rounded-md p-8 border border-border-thin shadow-sm">
                             <h4 className="font-black text-sm uppercase tracking-widest mb-2 flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-brand-primary"></span>
                                 Need help?
