@@ -135,7 +135,7 @@ const Navbar = () => {
 
                                 {/* Profile Dropdown */}
                                 {isProfileOpen && (
-                                    <div className="absolute right-0 mt-3 w-64 origin-top-right rounded-[2rem] border border-border-thin bg-app-bg p-3 shadow-2xl ring-1 ring-black/5">
+                                    <div className="absolute right-0 mt-3 w-64 origin-top-right rounded-md border border-border-thin bg-app-bg p-3 shadow-2xl ring-1 ring-black/5">
                                         <div className="mb-2 px-4 py-3 border-b border-border-thin">
                                             <p className="text-[10px] font-black text-text-dim uppercase tracking-[0.2em]">
                                                 Authenticated as

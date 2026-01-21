@@ -24,14 +24,15 @@ const AdminStatCart = ({ title, value, rate, icon }) => {
  shadow-lg
  rounded-md
  p-6
- border border-[rgba(255,255,255,0.08)]
- "
+                border border-gray-200
+                "
         >
             <div className="flex items-start justify-between mb-4">
                 <div>
                     <p className="text-text-secondary text-sm mb-2">{title}</p>
                     <h3 className="text-3xl font-bold text-text-primary">
-                        ${value?.toLocaleString() || 0}
+                        {icon === "Sales" ? "$" : ""}
+                        {value?.toLocaleString() || 0}
                     </h3>
                 </div>
 

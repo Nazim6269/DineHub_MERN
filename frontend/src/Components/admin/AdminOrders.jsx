@@ -23,8 +23,8 @@ const AdminOrders = () => {
             </h1>
 
             {/* Table Wrapper */}
-            <div className="bg-background-card rounded-md shadow-lg overflow-x-auto border border-white/20">
-                <table className="w-full min-w-150 text-left text-text-secondary">
+            <div className="bg-background-card rounded-md shadow-lg overflow-x-auto border border-gray-200">
+                <table className="w-full min-w-[600px] text-left text-text-secondary">
                     {/* Table Head */}
                     <thead className="bg-background-dark text-text-muted text-sm uppercase">
                         <tr>
@@ -41,14 +41,14 @@ const AdminOrders = () => {
                         {data?.payload?.orders.map((order) => (
                             <tr
                                 key={order.orderId}
-                                className="border-t border-white/20 hover:bg-background-dark transition"
+                                className="border-t border-gray-200 hover:bg-gray-50 transition"
                             >
                                 <td className="p-4 font-medium text-text-primary">
                                     {order.orderId}
                                 </td>
                                 <td className="p-4">{order.customer}</td>
                                 <td className="p-4 font-semibold text-text-primary">
-                                    {order.total}
+                                    ${order.total?.toFixed(2)}
                                 </td>
                                 <td className="p-4">
                                     <span

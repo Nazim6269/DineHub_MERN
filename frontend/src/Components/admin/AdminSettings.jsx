@@ -34,7 +34,7 @@ const AdminSettings = () => {
                         name="siteName"
                         value={settings.siteName}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 rounded-lg bg-background-dark text-text-primary border border-white/20 focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan)"
+                        className="w-full px-4 py-2 rounded-lg bg-background-dark text-text-primary border border-gray-200 focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan)"
                     />
                 </div>
 
@@ -46,7 +46,7 @@ const AdminSettings = () => {
                         name="adminEmail"
                         value={settings.adminEmail}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 rounded-lg bg-background-dark text-text-primary border border-white/20 focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan)"
+                        className="w-full px-4 py-2 rounded-lg bg-background-dark text-text-primary border border-gray-200 focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan)"
                     />
                 </div>
 
@@ -58,7 +58,7 @@ const AdminSettings = () => {
                         name="password"
                         value={settings.password}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 rounded-lg bg-background-dark text-text-primary border border-white/20 focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan)"
+                        className="w-full px-4 py-2 rounded-lg bg-background-dark text-text-primary border border-gray-200 focus:outline-none focus:ring-2 focus:ring-(--color-accent-cyan)"
                     />
                 </div>
 

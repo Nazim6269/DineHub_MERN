@@ -55,19 +55,6 @@ const HeroSection = () => {
               >
                 Get Started
               </button>
-
-              <button
-                className="
-                    rounded-sm px-8 py-4
-                    font-black
-                    text-text-main
-                    border-2 border-border-thin
-                    hover:border-brand-primary
-                    transition-all uppercase
-                  "
-              >
-                Watch Demo
-              </button>
             </div>
           </div>
 

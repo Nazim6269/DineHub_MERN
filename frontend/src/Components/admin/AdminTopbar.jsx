@@ -5,10 +5,10 @@ const AdminTopbar = ({ setSidebarOpen }) => {
     return (
         <header
             className="
- bg-background-card
- text-text-secondary
- border-b border-[rgba(255,255,255,0.08)]
- "
+                bg-background-card
+                text-text-secondary
+                border-b border-gray-200
+                "
         >
             <div className="flex items-center justify-between p-4">
                 {/* Left */}
@@ -39,9 +39,9 @@ const AdminTopbar = ({ setSidebarOpen }) => {
                             placeholder="Search orders, menu items..."
                             className="
  w-full pl-10 pr-4 py-2.5
- bg-background-card
- text-text-primary
- border border-[rgba(255,255,255,0.1)]
+                                bg-background-card
+                                text-text-primary
+                                border border-gray-200
  rounded-lg
  focus:outline-none
  focus:ring-2 focus:ring-(--color-accent-cyan)
@@ -55,9 +55,9 @@ const AdminTopbar = ({ setSidebarOpen }) => {
                 <div className="flex items-center space-x-3">
                     <button
                         className="
- p-2 rounded-lg
- text-text-secondary
- hover:bg-[rgba(255,255,255,0.05)]
+                        p-2 rounded-lg
+                        text-text-secondary
+                        hover:bg-gray-100
  hover:text-(--color-accent-cyan)
  transition
  "
@@ -69,9 +69,9 @@ const AdminTopbar = ({ setSidebarOpen }) => {
 
                     <button
                         className="
- p-2 rounded-lg
- text-text-secondary
- hover:bg-[rgba(255,255,255,0.05)]
+                        p-2 rounded-lg
+                        text-text-secondary
+                        hover:bg-gray-100
  hover:text-(--color-accent-cyan)
  transition
  "
@@ -81,9 +81,9 @@ const AdminTopbar = ({ setSidebarOpen }) => {
 
                     <button
                         className="
- relative p-2 rounded-lg
- text-text-secondary
- hover:bg-[rgba(255,255,255,0.05)]
+                        relative p-2 rounded-lg
+                        text-text-secondary
+                        hover:bg-gray-100
  hover:text-(--color-accent-cyan)
  transition
  "

@@ -16,8 +16,8 @@ const AdminUsers = () => {
             </h1>
 
             {/* Table */}
-            <div className="bg-background-card rounded-md shadow-lg overflow-x-auto border border-white/20">
-                <table className="w-full min-w-150 text-left text-text-secondary">
+            <div className="bg-background-card rounded-md shadow-lg overflow-x-auto border border-gray-200">
+                <table className="w-full min-w-[600px] text-left text-text-secondary">
                     {/* Table Head */}
                     <thead className="bg-background-dark text-text-muted text-sm uppercase">
                         <tr>
@@ -33,7 +33,7 @@ const AdminUsers = () => {
                         {data?.payload?.users.map((user) => (
                             <tr
                                 key={user._id}
-                                className="border-t border-white/20 hover:bg-background-dark transition"
+                                className="border-t border-gray-200 hover:bg-gray-50 transition"
                             >
                                 <td className="p-4 font-medium text-text-primary">
                                     {user.name}
@@ -42,8 +42,8 @@ const AdminUsers = () => {
                                 <td className="p-4">
                                     <span
                                         className={`px-3 py-1 text-xs font-medium rounded-full ${user.role === "admin"
-                                                ? "bg-purple-500/10 text-purple-400"
-                                                : "bg-gray-700/10 text-gray-400"
+                                            ? "bg-purple-500/10 text-purple-400"
+                                            : "bg-gray-700/10 text-gray-400"
                                             }`}
                                     >
                                         {user.role}

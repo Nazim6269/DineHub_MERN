@@ -21,8 +21,8 @@ const AdminProducts = () => {
             </div>
 
             {/* Table */}
-            <div className="bg-background-card rounded-md shadow-lg overflow-x-auto border border-white/20">
-                <table className="w-full min-w-150 text-left text-text-secondary">
+            <div className="bg-background-card rounded-md shadow-lg overflow-x-auto border border-gray-200">
+                <table className="w-full min-w-[600px] text-left text-text-secondary">
                     {/* Table Head */}
                     <thead className="bg-background-dark text-text-muted text-sm uppercase">
                         <tr>
@@ -39,11 +39,11 @@ const AdminProducts = () => {
                         {data?.payload?.products.map((p) => (
                             <tr
                                 key={p._id}
-                                className="border-t border-white/20 hover:bg-background-dark transition"
+                                className="border-t border-gray-200 hover:bg-gray-50 transition"
                             >
                                 <td className="p-4 font-medium text-text-primary">{p.name}</td>
                                 <td className="p-4 font-semibold text-text-primary">
-                                    {p.options[0].half && p.options[0].full}
+                                    ${p.options?.[0]?.full || p.options?.[0]?.half || 0}
                                 </td>
                                 <td className="p-4">{p.stock}</td>
                                 <td className="p-4">

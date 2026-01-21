@@ -28,8 +28,8 @@ const AdminCategories = () => {
             </div>
 
             {/* Table */}
-            <div className="bg-background-card rounded-md shadow-lg overflow-x-auto border border-white/20">
-                <table className="w-full min-w-125 text-left text-text-secondary">
+            <div className="bg-background-card rounded-md shadow-lg overflow-x-auto border border-gray-200">
+                <table className="w-full min-w-[500px] text-left text-text-secondary">
                     <thead className="bg-background-dark text-text-muted text-sm uppercase">
                         <tr>
                             <th className="p-4">Name</th>
@@ -41,7 +41,7 @@ const AdminCategories = () => {
                         {categoryArray.map((cat, index) => (
                             <tr
                                 key={index}
-                                className="border-t border-white/20 hover:bg-background-dark transition"
+                                className="border-t border-gray-200 hover:bg-gray-50 transition"
                             >
                                 <td className="p-4 font-medium text-text-primary">{cat}</td>
                                 <td className="p-4">{cat}</td>

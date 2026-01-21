@@ -40,6 +40,20 @@
   --color-status-success: #10b981;
   --color-status-error: #ef4444;
   --color-status-warning: #f59e0b;
+
+  /* Admin / Light Mode System (flipped from Dark) */
+  --color-background-dark: #f8fafc;
+  /* Light Page Bg */
+  --color-background-card: #ffffff;
+  /* White Card Bg */
+  --color-accent-cyan: #06b6d4;
+  /* Keep Brand Color */
+  --color-text-primary: #0f172a;
+  /* Dark Text */
+  --color-text-secondary: #475569;
+  /* Slate Text */
+  --color-text-muted: #94a3b8;
+  /* Muted Text */
 }
 
 @layer components {
