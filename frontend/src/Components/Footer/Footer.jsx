@@ -46,9 +46,9 @@ const Footer = () => {
                         <div className="inline-block">
                             <h2 className="text-3xl font-black tracking-tight">
                                 Dine
-                                <span className="text-transparent bg-clip-text bg-cyan-400">Hub</span>
+                                <span className="text-brand-primary">Hub</span>
                             </h2>
-                            <div className="h-1 w-12 bg-cyan-400  rounded-full mt-2" />
+                            <div className="h-1 w-12 bg-brand-primary  rounded-full mt-2" />
                         </div>
                         <p className="text-slate-300 leading-relaxed text-sm">
                             Savor every flavor with our curated culinary delights. Join us to explore a world of exquisite tastes and unforgettable experiences.
@@ -78,16 +78,16 @@ const Footer = () => {
                     <div className="space-y-6">
                         <h3 className="text-lg font-bold text-white relative inline-block">
                             Company
-                            <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-cyan-400" />
+                            <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-brand-primary" />
                         </h3>
                         <ul className="space-y-3">
                             {companyLinks.map((link) => (
                                 <li key={link.name}>
                                     <a
                                         href={link.href}
-                                        className="text-slate-400 hover:text-cyan-400 transition-colors duration-300 text-sm flex items-center group"
+                                        className="text-slate-400 hover:text-brand-primary transition-colors duration-300 text-sm flex items-center group"
                                     >
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300" />
+                                        <span className="w-0 group-hover:w-2 h-0.5 bg-brand-primary mr-0 group-hover:mr-2 transition-all duration-300" />
                                         {link.name}
                                     </a>
                                 </li>
@@ -99,16 +99,16 @@ const Footer = () => {
                     <div className="space-y-6">
                         <h3 className="text-lg font-bold text-white relative inline-block">
                             Community
-                            <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-cyan-400" />
+                            <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-brand-primary" />
                         </h3>
                         <ul className="space-y-3">
                             {communityLinks.map((link) => (
                                 <li key={link.name}>
                                     <a
                                         href={link.href}
-                                        className="text-slate-400 hover:text-cyan-400 transition-colors duration-300 text-sm flex items-center group"
+                                        className="text-slate-400 hover:text-brand-primary transition-colors duration-300 text-sm flex items-center group"
                                     >
-                                        <span className="w-0 group-hover:w-2 h-0.5 bg-cyan-400 mr-0 group-hover:mr-2 transition-all duration-300" />
+                                        <span className="w-0 group-hover:w-2 h-0.5 bg-brand-primary mr-0 group-hover:mr-2 transition-all duration-300" />
                                         {link.name}
                                     </a>
                                 </li>
@@ -120,7 +120,7 @@ const Footer = () => {
                     <div className="space-y-6">
                         <h3 className="text-lg font-bold text-white relative inline-block">
                             Stay Updated
-                            <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-cyan-400" />
+                            <span className="absolute -bottom-2 left-0 w-8 h-0.5 bg-brand-primary" />
                         </h3>
                         <p className="text-slate-400 text-sm leading-relaxed">
                             Get exclusive updates about new menus, special offers, and culinary events.
@@ -128,13 +128,13 @@ const Footer = () => {
 
                         <form onSubmit={handleSubscribe} className="space-y-3">
                             <div className="relative group">
-                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 group-focus-within:text-cyan-400 transition-colors" />
+                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 group-focus-within:text-brand-primary transition-colors" />
                                 <input
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     placeholder="Enter your email"
-                                    className="w-full  border border-slate-700 rounded-lg pl-11 pr-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 focus:bg-slate-750 transition-all duration-300"
+                                    className="w-full  border border-slate-700 rounded-lg pl-11 pr-4 py-3 text-sm text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-primary focus:bg-slate-750 transition-all duration-300"
                                     required
                                 />
                             </div>
@@ -161,13 +161,13 @@ const Footer = () => {
                         </p>
 
                         <div className="flex gap-6 text-sm">
-                            <a href="/privacy" className="text-slate-400 hover:text-cyan-400 transition-colors">
+                            <a href="/privacy" className="text-slate-400 hover:text-brand-primary transition-colors">
                                 Privacy Policy
                             </a>
-                            <a href="/terms" className="text-slate-400 hover:text-cyan-400 transition-colors">
+                            <a href="/terms" className="text-slate-400 hover:text-brand-primary transition-colors">
                                 Terms of Service
                             </a>
-                            <a href="/sitemap" className="text-slate-400 hover:text-cyan-400 transition-colors">
+                            <a href="/sitemap" className="text-slate-400 hover:text-brand-primary transition-colors">
                                 Sitemap
                             </a>
                         </div>

@@ -1,13 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  /* 
-     MODULAR THEME SYSTEM
-     Change these values to update the entire project identity.
-  */
 
   /* Brand Identity */
-  --color-brand-primary: #06b6d4;
+  --color-brand-primary: #0346d4;
   /* The highlight color (Cyan) */
   --color-brand-secondary: #0ea5e9;
   /* Secondary highlight */

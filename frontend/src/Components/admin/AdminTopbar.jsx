@@ -16,7 +16,7 @@ const AdminTopbar = ({ setSidebarOpen }) => {
                     <button
                         onClick={() => setSidebarOpen(true)}
                         className="mr-4 lg:hidden text-text-secondary
- hover:text-(--color-accent-cyan) transition"
+ hover:text-(--color-text-primary) transition"
                     >
                         <Menu className="w-6 h-6" />
                     </button>
@@ -44,7 +44,7 @@ const AdminTopbar = ({ setSidebarOpen }) => {
                                 border border-gray-200
  rounded-lg
  focus:outline-none
- focus:ring-2 focus:ring-(--color-accent-cyan)
+ focus:ring-2 focus:ring-(--color-brand-primary)
  placeholder:text-text-muted
  "
                         />
@@ -58,7 +58,7 @@ const AdminTopbar = ({ setSidebarOpen }) => {
                         p-2 rounded-lg
                         text-text-secondary
                         hover:bg-gray-100
- hover:text-(--color-accent-cyan)
+ hover:text-(--color-brand-primary)
  transition
  "
                     >
@@ -72,7 +72,7 @@ const AdminTopbar = ({ setSidebarOpen }) => {
                         p-2 rounded-lg
                         text-text-secondary
                         hover:bg-gray-100
- hover:text-(--color-accent-cyan)
+ hover:text-(--color-brand-primary)
  transition
  "
                     >
@@ -84,7 +84,7 @@ const AdminTopbar = ({ setSidebarOpen }) => {
                         relative p-2 rounded-lg
                         text-text-secondary
                         hover:bg-gray-100
- hover:text-(--color-accent-cyan)
+ hover:text-(--color-brand-primary)
  transition
  "
                     >
@@ -93,7 +93,7 @@ const AdminTopbar = ({ setSidebarOpen }) => {
                             className="
  absolute top-1.5 right-1.5
  w-2 h-2
- bg-(--color-accent-cyan)
+ bg-(--color-brand-primary)
  rounded-full
  "
                         />
@@ -104,7 +104,7 @@ const AdminTopbar = ({ setSidebarOpen }) => {
                         <div
                             className="
  w-10 h-10
- bg-(--color-accent-cyan)
+ bg-(--color-brand-primary)
  rounded-full
  flex items-center justify-center
  text-background-dark

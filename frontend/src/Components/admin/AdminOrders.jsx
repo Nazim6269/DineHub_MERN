@@ -59,7 +59,7 @@ const AdminOrders = () => {
                                     </span>
                                 </td>
                                 <td className="p-4 text-right">
-                                    <button className="text-(--color-accent-cyan) hover:underline">
+                                    <button className="text-brand-primary hover:underline">
                                         View
                                     </button>
                                 </td>

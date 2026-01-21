@@ -39,9 +39,8 @@ const AdminStatCart = ({ title, value, rate, icon }) => {
                 <div
                     className="
  p-3
- bg-(--color-accent-cyan)
+ bg-(--color-brand-primary)
  rounded-md
- shadow-[0_0_0_1px_rgba(0,217,192,0.35)]
  "
                 >
                     {getIcon(icon)}
@@ -50,7 +49,7 @@ const AdminStatCart = ({ title, value, rate, icon }) => {
 
             <div className="flex items-center text-sm">
                 <span
-                    className={`font-semibold ${rate >= 0 ? "text-(--color-accent-cyan)" : "text-red-500"
+                    className={`font-semibold ${rate >= 0 ? "text-(--color-brand-primary)" : "text-red-500"
                         }`}
                 >
                     {rate >= 0 ? "+" : ""}

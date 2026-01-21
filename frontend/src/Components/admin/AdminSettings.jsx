@@ -64,7 +64,7 @@ const AdminSettings = () => {
 
                 <button
                     type="submit"
-                    className="bg-(--color-accent-cyan) hover:bg-cyan-500 text-white font-semibold px-6 py-2 rounded-lg transition"
+                    className="bg-brand-primary hover:bg-brand-secondary text-white font-semibold px-6 py-2 rounded-lg transition"
                 >
                     Save Settings
                 </button>

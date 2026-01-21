@@ -19,7 +19,7 @@ const Profile = () => {
                                 alt={profile.name}
                                 className="w-32 h-32 rounded-md border-4 border-background-dark object-cover shadow-2xl"
                             />
-                            <div className="absolute -bottom-2 -right-2 bg-(--color-accent-cyan) text-black p-1.5 rounded-md border-4 border-background-dark">
+                            <div className="absolute -bottom-2 -right-2 bg-(--color-brand-primary) text-black p-1.5 rounded-md border-4 border-background-dark">
                                 <BadgeCheck size={20} />
                             </div>
                         </div>
@@ -40,7 +40,7 @@ const Profile = () => {
                     <div className="space-y-6">
                         <div className="bg-background-card rounded-md p-6 border border-white/10">
                             <h2 className="text-lg font-bold mb-4 flex items-center gap-2">
-                                <UserIcon size={20} className="text-(--color-accent-cyan)" />
+                                <UserIcon size={20} className="text-(--color-brand-primary)" />
                                 Personal Info
                             </h2>
                             <div className="space-y-4">
@@ -78,7 +78,7 @@ const Profile = () => {
                                     <Package size={24} className="text-purple-400" />
                                     Order History
                                 </h2>
-                                <button className="text-sm font-medium text-(--color-accent-cyan) hover:underline">
+                                <button className="text-sm font-medium text-(--color-brand-primary) hover:underline">
                                     View All
                                 </button>
                             </div>
@@ -92,7 +92,7 @@ const Profile = () => {
                                 <p className="text-text-secondary text-sm max-w-xs">
                                     Looks like you haven&apos;t ordered anything from DineHub yet. Start exploring our menu!
                                 </p>
-                                <button className="mt-6 px-8 py-3 rounded-md bg-(--color-accent-cyan) text-black font-bold hover:shadow-[0_0_20px_rgba(0,217,192,0.3)] transition-all">
+                                <button className="mt-6 px-8 py-3 rounded-md bg-(--color-brand-primary) text-white font-bold cursor-pointer transition-all">
                                     Browse Menu
                                 </button>
                             </div>

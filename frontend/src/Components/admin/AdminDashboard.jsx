@@ -206,7 +206,7 @@ const AdminDashboard = () => {
                                 <button
                                     className="
  px-4 py-2
- bg-(--color-accent-cyan)
+ bg-brand-primary
  text-white
  rounded-lg
  text-sm font-medium
@@ -220,7 +220,7 @@ const AdminDashboard = () => {
                             {/* Legend */}
                             <div className="flex items-center mb-4 space-x-6">
                                 <div className="flex items-center">
-                                    <div className="w-3 h-3 bg-(--color-accent-cyan) rounded-full mr-2" />
+                                    <div className="w-3 h-3 bg-brand-primary rounded-full mr-2" />
                                     <span className="text-sm text-text-secondary">Revenue</span>
                                 </div>
                                 <div className="flex items-center">
@@ -301,7 +301,7 @@ const AdminDashboard = () => {
                                 <button
                                     className="
  text-text-muted
- hover:text-(--color-accent-cyan)
+ hover:text-brand-primary
  "
                                 >
                                     <MoreVertical className="w-5 h-5" />
@@ -388,7 +388,7 @@ const AdminDashboard = () => {
                                 <button
                                     className="
  text-text-muted
- hover:text-(--color-accent-cyan)
+ hover:text-brand-primary
  "
                                 >
                                     <MoreVertical className="w-5 h-5" />
@@ -409,7 +409,7 @@ const AdminDashboard = () => {
 
                                         <div className="w-full bg-[rgba(0,217,192,0.15)] rounded-full h-2">
                                             <div
-                                                className="bg-(--color-accent-cyan) h-2 rounded-full transition-all"
+                                                className="bg-brand-primary h-2 rounded-full transition-all"
                                                 style={{ width: `${item.percentage}%` }}
                                             />
                                         </div>
@@ -434,7 +434,7 @@ const AdminDashboard = () => {
                                 <button
                                     className="
  text-sm font-medium
- text-(--color-accent-cyan)
+ text-brand-primary
  hover:opacity-80
  "
                                 >
@@ -460,7 +460,7 @@ const AdminDashboard = () => {
                                             <div
                                                 className="
  w-10 h-10
- bg-(--color-accent-cyan)
+ bg-brand-primary
  rounded-lg
  flex items-center justify-center
  text-black
@@ -492,9 +492,9 @@ const AdminDashboard = () => {
                                             {/* Status = availability */}
                                             <div
                                                 className={`text-xs px-2 py-1 rounded-full inline-block ${order.status === "completed"
-                                                    ? "bg-[rgba(0,217,192,0.25)] text-(--color-accent-cyan)"
+                                                    ? "bg-[rgba(0,217,192,0.25)] text-brand-primary"
                                                     : order.status === "processing"
-                                                        ? "bg-[rgba(0,217,192,0.15)] text-(--color-accent-cyan)"
+                                                        ? "bg-[rgba(0,217,192,0.15)] text-brand-primary"
                                                         : order.status === "shipped"
                                                             ? "bg-[rgba(0,217,192,0.1)] text-text-secondary"
                                                             : "bg-[rgba(0,217,192,0.05)] text-text-muted"

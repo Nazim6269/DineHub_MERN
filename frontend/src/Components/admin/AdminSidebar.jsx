@@ -22,7 +22,7 @@ const AdminSidebar = () => {
         <aside className=" w-64 bg-background-card text-text-primary hidden md:-flex flex-col">
             {/* Logo */}
 
-            <div className="p-6 text-2xl font-bold border-b border-gray-200 text-(--color-accent-cyan)">
+            <div className="p-6 text-2xl font-bold border-b border-gray-200 text-brand-primary">
                 Admin Panel
             </div>
 
@@ -35,8 +35,8 @@ const AdminSidebar = () => {
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-4 py-2 rounded-lg transition-all
  ${isActive
-                                ? "bg-background-dark text-(--color-accent-cyan) font-semibold"
-                                : "text-text-secondary hover:bg-background-dark hover:text-(--color-accent-cyan)"
+                                ? "bg-background-dark text-brand-primary font-semibold"
+                                : "text-text-secondary hover:bg-background-dark hover:text-brand-primary"
                             }`
                         }
                     >

@@ -15,7 +15,7 @@ const AdminProducts = () => {
                 <h1 className="text-2xl sm:text-3xl font-semibold text-text-primary">
                     Products
                 </h1>
-                <button className="bg-(--color-accent-cyan) hover:bg-cyan-500 text-white font-semibold px-4 py-2 rounded-lg transition">
+                <button className="bg-brand-primary hover:bg-brand-secondary text-white font-semibold px-4 py-2 rounded-lg transition">
                     + Add Product
                 </button>
             </div>
@@ -57,7 +57,7 @@ const AdminProducts = () => {
                                     </span>
                                 </td>
                                 <td className="p-4 text-right flex flex-wrap gap-2 justify-end">
-                                    <button className="text-(--color-accent-cyan) hover:underline">
+                                    <button className="text-brand-primary hover:underline">
                                         Edit
                                     </button>
                                     <button className="text-red-400 hover:underline">

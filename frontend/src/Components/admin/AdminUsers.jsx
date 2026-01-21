@@ -51,7 +51,7 @@ const AdminUsers = () => {
                                 </td>
                                 <td className="p-4 text-right flex flex-wrap gap-2 justify-end">
                                     {user.role !== "admin" && (
-                                        <button className="text-(--color-accent-cyan) hover:underline">
+                                        <button className="text-(--color-brand-primary) hover:underline">
                                             Make Admin
                                         </button>
                                     )}
