@@ -17,7 +17,7 @@ const middleware = [
   cookieParser(),
   morgan("dev"),
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", 'https://project02-dine-hub-mern-aqcz.vercel.app/'],
     credentials: true,
   }),
   rateLimit({
