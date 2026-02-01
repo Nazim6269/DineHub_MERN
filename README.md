@@ -1365,10 +1365,12 @@ For issues and questions:
 
 ## Contact
 
-- **Developer**: Rizwan
-- **Portfolio**: [Your Portfolio]
-- **GitHub**: [Your GitHub Profile]
-- **LinkedIn**: [Your LinkedIn]
+- **Developer**: Nazim Uddin
+- 🌐 [Portfolio](https://portfolio-eight-psi-w4m6xlga2m.vercel.app/)
+- 💼 [LinkedIn](https://www.linkedin.com/in/nazim-uddin-23a93a216/)
+- 🐙 [GitHub](https://github.com/Nazim6269)
+
+
 
 ---
 
