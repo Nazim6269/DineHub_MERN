@@ -43,19 +43,6 @@ const HeroSection = () => {
               flair. Every bite is crafted to feel unforgettable.
             </p>
 
-            <div className="flex justify-center md:justify-start gap-4 mt-6">
-              <button
-                className="
-                    rounded-sm px-8 py-4
-                    font-black text-text-on-brand
-                    bg-brand-primary uppercase 
-                    hover:scale-105 active:scale-95
-                    transition-all
-                  "
-              >
-                Get Started
-              </button>
-            </div>
           </div>
 
           {/* Image content */}

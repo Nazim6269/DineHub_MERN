@@ -1,5 +1,7 @@
 import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import AdminCategories from "./Components/admin/AdminCategories";
 import AdminOrders from "./Components/admin/AdminOrders";
 import AdminProducts from "./Components/admin/AdminProducts";
@@ -25,52 +27,62 @@ import Home from "./screens/Home";
 import NotFound from "./screens/NotFound";
 import Profile from "./screens/Profile";
 import Settings from "./screens/Settings";
+import PaymentSuccess from "./screens/PaymentSuccess";
+import PaymentFailed from "./screens/PaymentFailed";
 // Create a client
 const queryClient = new QueryClient();
 
 function App() {
- return (
- <Provider store={store}>
- <QueryClientProvider client={queryClient}>
- <BrowserRouter>
- <Routes>
- {/* PUBLIC */}
- <Route path="/login" element={<LoginForm />} />
- <Route path="/signup" element={<SignupForm />} />
- <Route path="/forget-password" element={<ForgetPassword />} />
- <Route path="/reset-password" element={<ResetPassword />} />
+    return (
+        <Provider store={store}>
+            <QueryClientProvider client={queryClient}>
+                <ToastContainer />
+                <BrowserRouter>
+                    <Routes>
+                        {/* PUBLIC */}
+                        <Route path="/login" element={<LoginForm />} />
+                        <Route path="/signup" element={<SignupForm />} />
+                        <Route path="/forget-password" element={<ForgetPassword />} />
+                        <Route path="/reset-password" element={<ResetPassword />} />
 
- {/* USER PRIVATE */}
- <Route element={<PrivateRoute />}>
- <Route element={<MainLayout />}>
- <Route path="/" element={<Home />} />
- <Route path="/cardDetails/:id" element={<CardDetails />} />
- <Route path="/cart" element={<Cart />} />
- <Route path="/contact" element={<Contact />} />
- <Route path="/profile" element={<Profile />} />
- <Route path="/settings" element={<Settings />} />
- <Route path="/category/:id" element={<SingleCategory />} />
- </Route>
- </Route>
+                        {/* USER PRIVATE */}
 
- {/* ADMIN */}
- <Route element={<AdminRoute />}>
- <Route element={<AdminLayout />}>
- <Route path="/admin/dashboard" element={<AdminDashboard />} />
- <Route path="/admin/products" element={<AdminProducts />} />
- <Route path="/admin/orders" element={<AdminOrders />} />
- <Route path="/admin/users" element={<AdminUsers />} />
- <Route path="/admin/categories" element={<AdminCategories />} />
- <Route path="/admin/settings" element={<AdminSettings />} />
- </Route>
- </Route>
+                        {/* MAIN LAYOUT (Public & Private) */}
+                        <Route element={<MainLayout />}>
+                            {/* Public Access */}
+                            <Route path="/" element={<Home />} />
+                            <Route path="/cardDetails/:id" element={<CardDetails />} />
 
- <Route path="*" element={<NotFound />} />
- </Routes>
- </BrowserRouter>
- </QueryClientProvider>
- </Provider>
- );
+                            {/* Private Access */}
+                            <Route element={<PrivateRoute />}>
+                                <Route path="/cart" element={<Cart />} />
+                                <Route path="/contact" element={<Contact />} />
+                                <Route path="/profile" element={<Profile />} />
+                                <Route path="/settings" element={<Settings />} />
+                                <Route path="/category/:id" element={<SingleCategory />} />
+                                <Route path="/payment/success" element={<PaymentSuccess />} />
+                                <Route path="/payment/failed" element={<PaymentFailed />} />
+                            </Route>
+                        </Route>
+
+                        {/* ADMIN */}
+                        <Route element={<AdminRoute />}>
+                            <Route element={<AdminLayout />}>
+                                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                                <Route path="/admin/products" element={<AdminProducts />} />
+                                <Route path="/admin/orders" element={<AdminOrders />} />
+                                <Route path="/admin/users" element={<AdminUsers />} />
+                                <Route path="/admin/categories" element={<AdminCategories />} />
+                                <Route path="/admin/settings" element={<AdminSettings />} />
+                            </Route>
+                        </Route>
+
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </BrowserRouter>
+            </QueryClientProvider>
+        </Provider>
+    );
 }
 
 export default App;

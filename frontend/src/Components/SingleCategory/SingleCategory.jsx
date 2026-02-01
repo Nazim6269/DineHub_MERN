@@ -25,9 +25,15 @@ const SingleCategory = () => {
             (item) => item.CategoryName.toLowerCase() === id.toLowerCase()
         );
 
+        // Helper to get price
+        const getPrice = (item) => {
+            const opt = item.options?.[0] || {};
+            return Number(opt.regular || opt.large || opt.small || opt.half || opt.full || opt.single || Object.values(opt)[0] || 0);
+        };
+
         // Filter by Price Range
         result = result.filter((item) => {
-            const price = item.options[0].half || item.options[0].full;
+            const price = getPrice(item);
             return price >= filteredRange.minValue && price <= filteredRange.maxValue;
         });
 
@@ -40,9 +46,9 @@ const SingleCategory = () => {
 
         // Sorting
         if (sortBy === "lowToHigh") {
-            result.sort((a, b) => (a.options[0].half || a.options[0].full) - (b.options[0].half || b.options[0].full));
+            result.sort((a, b) => getPrice(a) - getPrice(b));
         } else if (sortBy === "highToLow") {
-            result.sort((a, b) => (b.options[0].half || b.options[0].full) - (a.options[0].half || a.options[0].full));
+            result.sort((a, b) => getPrice(b) - getPrice(a));
         } else if (sortBy === "nameAZ") {
             result.sort((a, b) => a.name.localeCompare(b.name));
         }
@@ -134,50 +140,55 @@ const SingleCategory = () => {
                         {/* Products Grid */}
                         {filteredData.length > 0 ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-                                {filteredData.map((item) => (
-                                    <div
-                                        key={item._id}
-                                        className="group bg-card-bg border border-border-thin rounded-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-brand-primary/30 hover:shadow-xl hover:shadow-text-main/5"
-                                    >
-                                        <div className="h-60 overflow-hidden relative">
-                                            <Link to={`/cardDetails/${item._id}`}>
-                                                <img
-                                                    src={item.img}
-                                                    alt={item.name}
-                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                                />
-                                            </Link>
-                                            <div className="absolute top-4 right-4 bg-app-bg/90 backdrop-blur-md px-4 py-2 rounded-md border border-border-thin font-black text-text-main text-sm shadow-xl">
-                                                Tk {item.options[0].half || item.options[0].full}
-                                            </div>
-                                        </div>
+                                {filteredData.map((item) => {
+                                    const opt = item.options?.[0] || {};
+                                    const price = opt.regular || opt.large || opt.small || opt.half || opt.full || opt.single;
 
-                                        <div className="p-8">
-                                            <div className="flex items-center justify-between mb-3">
-                                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-text-dim">
-                                                    {item.CategoryName}
-                                                </span>
-                                                <div className="flex items-center gap-1.5 text-status-warning">
-                                                    <span className="text-xs font-black">4.8</span>
-                                                    <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                                    return (
+                                        <div
+                                            key={item._id}
+                                            className="group bg-card-bg border border-border-thin rounded-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:border-brand-primary/30 hover:shadow-xl hover:shadow-text-main/5"
+                                        >
+                                            <div className="h-60 overflow-hidden relative">
+                                                <Link to={`/cardDetails/${item._id}`}>
+                                                    <img
+                                                        src={item.img}
+                                                        alt={item.name}
+                                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                                    />
+                                                </Link>
+                                                <div className="absolute top-4 right-4 bg-app-bg/90 backdrop-blur-md px-4 py-2 rounded-md border border-border-thin font-black text-text-main text-sm shadow-xl">
+                                                    Tk {price}
                                                 </div>
                                             </div>
 
-                                            <Link to={`/cardDetails/${item._id}`}>
-                                                <h3 className="text-xl font-black text-text-main mb-6 uppercase tracking-tight group-hover:text-brand-primary transition-colors line-clamp-1">
-                                                    {item.name}
-                                                </h3>
-                                            </Link>
+                                            <div className="p-8">
+                                                <div className="flex items-center justify-between mb-3">
+                                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-text-dim">
+                                                        {item.CategoryName}
+                                                    </span>
+                                                    <div className="flex items-center gap-1.5 text-status-warning">
+                                                        <span className="text-xs font-black">4.8</span>
+                                                        <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                                                    </div>
+                                                </div>
 
-                                            <Link
-                                                to={`/cardDetails/${item._id}`}
-                                                className="block w-full text-center py-4 rounded-md bg-app-bg border border-border-thin font-extrabold text-[10px] uppercase tracking-[0.2em] text-text-dim transition-all hover:bg-brand-primary hover:text-text-on-brand hover:border-transparent hover:shadow-lg hover:shadow-brand-primary/20"
-                                            >
-                                                Details View
-                                            </Link>
+                                                <Link to={`/cardDetails/${item._id}`}>
+                                                    <h3 className="text-xl font-black text-text-main mb-6 uppercase tracking-tight group-hover:text-brand-primary transition-colors line-clamp-1">
+                                                        {item.name}
+                                                    </h3>
+                                                </Link>
+
+                                                <Link
+                                                    to={`/cardDetails/${item._id}`}
+                                                    className="block w-full text-center py-4 rounded-md bg-app-bg border border-border-thin font-extrabold text-[10px] uppercase tracking-[0.2em] text-text-dim transition-all hover:bg-brand-primary hover:text-text-on-brand hover:border-transparent hover:shadow-lg hover:shadow-brand-primary/20"
+                                                >
+                                                    Details View
+                                                </Link>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         ) : (
                             <div className="flex flex-col items-center justify-center py-32 bg-card-bg border-2 border-dashed border-border-strong rounded-[3rem]">

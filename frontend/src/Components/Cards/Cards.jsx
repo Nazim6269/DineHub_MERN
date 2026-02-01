@@ -1,11 +1,13 @@
 import { Search, ShoppingBag, Star } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { setSelectProduct, addToCart } from "../../redux/actions/actionsCreator";
 
 const Cards = () => {
   const { data } = useSelector((state) => state.fetchReducer);
   const { searchTerm } = useSelector((state) => state.filterReducer);
+  const { profile } = useSelector((state) => state.profileReducer);
   const dispatch = useDispatch();
 
   if (!data) {
@@ -78,11 +80,18 @@ const Cards = () => {
                       <div>
                         <p className="text-[10px] font-black text-text-dim uppercase tracking-[0.2em] mb-1">Starting from</p>
                         <p className="text-2xl font-black text-text-main tracking-tighter">
-                          Tk {options[0].half || options[0].full}
+                          Tk {options[0].regular || options[0].large || options[0].small || options[0].half || options[0].full || options[0].single}
                         </p>
                       </div>
                       <button
-                        onClick={() => dispatch(addToCart(item))}
+                        onClick={() => {
+                          if (!profile) {
+                            toast.error("Please login to add item in cart");
+                          } else {
+                            dispatch(addToCart(item));
+                            toast.success("Item added to cart");
+                          }
+                        }}
                         className="p-4 rounded-md bg-app-bg border border-border-thin text-text-main hover:bg-brand-primary hover:text-text-on-brand hover:border-transparent transition-all active:scale-90 shadow-sm"
                       >
                         <ShoppingBag size={20} />
