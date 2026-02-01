@@ -7,11 +7,51 @@ import {
     decrementItem,
     removeFromCart,
 } from "../redux/actions/actionsCreator";
+import { loadStripe } from "@stripe/stripe-js";
+import { toast } from "react-toastify";
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const Cart = () => {
     const { cart } = useSelector((state) => state.cartReducer);
     const dispatch = useDispatch();
     const [amount, setAmount] = useState(0);
+
+    const handlePayment = async () => {
+        try {
+            const res = await fetch("http://localhost:3333/api/payment/create-checkout-session", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ items: cart }),
+                credentials: "include",
+            });
+
+            if (res.status === 401) {
+                toast.error("Session expired. Please login again.");
+                // clear local storage? dispatch logout?
+                // For now, redirect to login
+                setTimeout(() => {
+                    window.location.href = "/login";
+                }, 1500);
+                return;
+            }
+
+            const data = await res.json();
+
+            if (data.success && data.payload.url) {
+                window.location.href = data.payload.url;
+
+            } else {
+                console.error("Payment session creation failed or missing URL", data);
+            }
+        } catch (error) {
+            console.error("Payment error:", error);
+            toast.error("An unexpected error occurred.");
+        }
+    };
+
 
     // Save cart to localStorage and update amount
     useEffect(() => {
@@ -22,10 +62,11 @@ const Cart = () => {
     // Calculate total
     const total = useMemo(() => {
         return (
-            cart.reduce(
-                (sum, item) => sum + item.options[0].full * item.quantity,
-                0
-            ) + 10
+            cart.reduce((sum, item) => {
+                const price = item.options?.[0] ? Number(Object.values(item.options[0])[0]) : 0;
+                const quantity = Number(item.quantity) || 0;
+                return sum + price * quantity;
+            }, 0) + 10
         );
     }, [cart]);
 
@@ -69,8 +110,9 @@ const Cart = () => {
 
                         <div className="space-y-4">
                             {cart.map((item) => {
-                                const { _id, CategoryName, name, img, quantity } = item;
-                                const price = item.options[0].full;
+                                const { _id, CategoryName, name, img, quantity: itemQuantity } = item;
+                                const quantity = Number(itemQuantity) || 0;
+                                const price = item.options?.[0] ? Number(Object.values(item.options[0])[0]) : 0;
 
                                 return (
                                     <div
@@ -196,7 +238,9 @@ const Cart = () => {
                                     </div>
                                 </div>
 
-                                <button className="w-full bg-brand-primary py-5 rounded-md font-black text-text-on-brand text-lg uppercase shadow-lg shadow-brand-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-300">
+                                <button
+                                    onClick={handlePayment}
+                                    className="w-full bg-brand-primary py-5 rounded-md font-black text-text-on-brand text-lg uppercase shadow-lg shadow-brand-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-300">
                                     Proceed to Checkout
                                 </button>
 
