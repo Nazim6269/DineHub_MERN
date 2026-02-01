@@ -5,9 +5,11 @@ import mongoose from "mongoose";
 
 // Internal imports
 import { createJWT } from "../helpers/createJWT.js";
+import { clearAuthCookies } from "../helpers/cookies.js";
 import emailWithNodemailer from "../helpers/emailWithNodemailer.js";
 import { errorResponse, successResponse } from "../helpers/responseHandler.js";
 import { User } from "../models/userModel.js";
+import "../models/foodItemModel.js"; // Import key to register model
 import { jwtAccessKey, jwtSecretKey } from "../secret.js";
 
 const signupGetController = (req, res) => {
@@ -56,15 +58,25 @@ const googleLoginController = async (req, res, next) => {
 
 //==============logout controller===============//
 const logoutController = async (req, res, next) => {
-  const { email } = req.body;
-  const response = await User.findOneAndDelete(email);
-  if (!response) {
-    errorResponse(res, { statusCode: 400, message: "Failed To logout" });
-  } else {
-    successResponse(res, {
+  try {
+    // Clear authentication cookies
+    clearAuthCookies(res);
+
+    // Optional: Remove token from user's tokens array if needed
+    // This prevents token reuse even if someone has the cookie value
+    // if (req.user) {
+    //   const token = req.cookies.accessToken;
+    //   await User.findByIdAndUpdate(req.user._id, {
+    //     $pull: { tokens: { token } },
+    //   });
+    // }
+
+    return successResponse(res, {
       statusCode: 200,
-      message: "Successfully log out",
+      message: "Successfully logged out",
     });
+  } catch (error) {
+    next(createError(500, "Failed to logout"));
   }
 };
 
@@ -264,6 +276,43 @@ const resetPassController = async (req, res, next) => {
   }
 };
 
+// Add review controller
+const addReviewController = async (req, res, next) => {
+  try {
+    const { rating, comment, user_id, name } = req.body;
+    const { id } = req.params;
+
+    const FoodItem = mongoose.model("FoodItems"); // Assuming it's registered
+
+    const foodItem = await FoodItem.findById(id);
+
+    if (!foodItem) {
+      return errorResponse(res, {
+        statusCode: 404,
+        message: "Food item not found",
+      });
+    }
+
+    const review = {
+      user: user_id,
+      name: name,
+      rating: Number(rating),
+      comment,
+    };
+
+    foodItem.reviews.push(review);
+    await foodItem.save();
+
+    return successResponse(res, {
+      statusCode: 201,
+      message: "Review added successfully",
+      payload: foodItem,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export {
   foodController,
   forgetPassController,
@@ -273,4 +322,5 @@ export {
   resetPassController,
   signupGetController,
   signupPostController,
+  addReviewController,
 };

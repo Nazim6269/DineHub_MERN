@@ -11,10 +11,29 @@ const Contact = () => {
         message: "",
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        toast.success("Message sent successfully!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        try {
+            const res = await fetch("http://localhost:3333/api/contact/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                toast.success("Message sent successfully!");
+                setFormData({ name: "", email: "", subject: "", message: "" });
+            } else {
+                toast.error(data.message || "Failed to send message");
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error("Something went wrong");
+        }
     };
 
     const handleChange = (e) => {

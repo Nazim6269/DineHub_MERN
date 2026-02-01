@@ -2,6 +2,7 @@ import { ChevronLeft, Info, MessageSquare, ShoppingBag, Star, TrendingUp } from 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { setLocalSeclectedProduct } from "../../helpers/setLocalStorage";
 import { addToCart, setSelectProduct } from "../../redux/actions/actionsCreator";
 import Question from "../Question/Question";
@@ -14,6 +15,7 @@ const CardDetails = () => {
     const navigate = useNavigate();
     const { id } = useParams();
     const { data: allData } = useSelector((state) => state.fetchReducer);
+    const { profile } = useSelector((state) => state.profileReducer);
     const [selectedOption, setSelectedOption] = useState(0);
 
     // Find the specific item from allData
@@ -147,7 +149,14 @@ const CardDetails = () => {
                         {/* Action Buttons */}
                         <div className="flex flex-col gap-4">
                             <button
-                                onClick={() => dispatch(addToCart(product))}
+                                onClick={() => {
+                                    if (!profile) {
+                                        toast.error("Please login to add item in cart");
+                                    } else {
+                                        dispatch(addToCart(product));
+                                        toast.success("Item added to cart");
+                                    }
+                                }}
                                 className="w-full py-5 bg-brand-primary text-text-on-brand font-black text-lg rounded-md shadow-md shadow-brand-primary/20 hover:scale-105 transition-all flex items-center justify-center gap-3 active:scale-95"
                             >
                                 <ShoppingBag size={24} />
@@ -185,7 +194,7 @@ const CardDetails = () => {
                                     <Star className="text-status-warning fill-current" size={28} />
                                     Honest Reviews
                                 </h3>
-                                <Review />
+                                <Review reviews={product.reviews || []} foodId={id} />
                             </div>
                         </div>
 
