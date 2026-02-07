@@ -9,6 +9,7 @@ import Question from "../Question/Question";
 import RecentView from "../RecentView/RecentView";
 import RelatedItem from "../RelatedItem/RelatedItem";
 import Review from "../Review/Review";
+import CardDetailsSkeleton from "../Skeletons/CardDetailsSkeleton";
 
 const CardDetails = () => {
     const dispatch = useDispatch();
@@ -29,14 +30,7 @@ const CardDetails = () => {
     }, [product, dispatch]);
 
     if (!product) {
-        return (
-            <div className="h-[70vh] flex items-center justify-center bg-app-bg text-text-sub">
-                <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-primary mx-auto mb-4"></div>
-                    <p className="text-xl font-medium">Preparing your delicious details...</p>
-                </div>
-            </div>
-        );
+        return <CardDetailsSkeleton />;
     }
 
     const { img, description, name, CategoryName, options } = product;

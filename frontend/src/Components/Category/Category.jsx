@@ -1,17 +1,12 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import CategorySkeleton from "../Skeletons/CategorySkeleton";
 
 const Category = () => {
     const { data } = useSelector((state) => state.fetchReducer);
 
     if (!data) {
-        return (
-            <div className="h-[55vh] flex items-center justify-center bg-app-bg text-xl sm:text-3xl text-text-dim">
-                <div className="animate-pulse font-black uppercase tracking-tighter text-brand-primary">
-                    Loading Menu...
-                </div>
-            </div>
-        );
+        return <CategorySkeleton />;
     }
 
     // Get unique categories

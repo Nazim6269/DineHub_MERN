@@ -11,6 +11,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { toast } from "react-toastify";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:3333";
 
 const Cart = () => {
     const { cart } = useSelector((state) => state.cartReducer);
@@ -19,7 +20,7 @@ const Cart = () => {
 
     const handlePayment = async () => {
         try {
-            const res = await fetch("http://localhost:3333/api/payment/create-checkout-session", {
+            const res = await fetch(`${SERVER_URL}/api/payment/create-checkout-session`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

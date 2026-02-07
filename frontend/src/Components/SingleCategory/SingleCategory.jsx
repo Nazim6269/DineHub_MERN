@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import RangeFilter from "../RangeFilter/RangeFilter";
 import { setSearchTerm } from "../../redux/actions/actionsCreator";
+import SingleCategorySkeleton from "../Skeletons/SingleCategorySkeleton";
 
 const SingleCategory = () => {
     const { data } = useSelector((state) => state.fetchReducer);
@@ -57,13 +58,7 @@ const SingleCategory = () => {
     }, [data, id, searchTerm, filteredRange, sortBy, itemsToShow]);
 
     if (!data) {
-        return (
-            <div className="h-[55vh] flex items-center justify-center bg-app-bg text-xl sm:text-3xl text-text-dim">
-                <div className="animate-pulse font-black uppercase tracking-tighter text-brand-primary">
-                    Loading {id}...
-                </div>
-            </div>
-        );
+        return <SingleCategorySkeleton />;
     }
 
     return (

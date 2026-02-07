@@ -4,10 +4,15 @@ import {
   forgetPassController,
   googleLoginController,
   loginPostController,
+  loginOTPController,
   logoutController,
+  resendOTPController,
   resetPassController,
   signupGetController,
   signupPostController,
+  verifyLoginOTPController,
+  verifyResetOTPController,
+  verifySignupOTPController,
   addReviewController,
 } from "../controllers/userController.js";
 
@@ -48,6 +53,11 @@ userRouter.post(
 userRouter.post("/logout", logoutController);
 userRouter.get("/food", foodController);
 userRouter.post("/food/:id/review", protect, addReviewController);
+userRouter.post("/login-otp", authLimiter, loginOTPController);
+userRouter.post("/verify-login-otp", authLimiter, verifyLoginOTPController);
+userRouter.post("/verify-signup-otp", authLimiter, verifySignupOTPController);
+userRouter.post("/verify-reset-otp", authLimiter, verifyResetOTPController);
+userRouter.post("/resend-otp", authLimiter, resendOTPController);
 userRouter.post("/forget-password", authLimiter, forgetPassController);
 userRouter.post("/reset-password", resetPassController);
 userRouter.get(

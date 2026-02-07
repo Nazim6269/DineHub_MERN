@@ -3,17 +3,36 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { setSelectProduct, addToCart } from "../../redux/actions/actionsCreator";
+import CardsSkeleton from "../Skeletons/CardsSkeleton";
 
 const Cards = () => {
-  const { data } = useSelector((state) => state.fetchReducer);
+  const { data, isLoading, isError } = useSelector((state) => state.fetchReducer);
   const { searchTerm } = useSelector((state) => state.filterReducer);
   const { profile } = useSelector((state) => state.profileReducer);
   const dispatch = useDispatch();
 
-  if (!data) {
+  if (isLoading) {
+    return <CardsSkeleton />;
+  }
+
+  if (isError) {
     return (
       <div className="h-[55vh] flex items-center justify-center bg-app-bg text-text-dim">
-        <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-brand-primary"></div>
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-red-500 mb-2">Failed to load items</h3>
+          <p className="text-text-sub">Please make sure the server is running and try again.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!data || data.length === 0) {
+    return (
+      <div className="h-[55vh] flex items-center justify-center bg-app-bg text-text-dim">
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-text-main mb-2">No items available</h3>
+          <p className="text-text-sub">Check back later for new dishes.</p>
+        </div>
       </div>
     );
   }

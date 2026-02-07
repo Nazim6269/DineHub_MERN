@@ -28,6 +28,16 @@ const userSchema = mongoose.Schema({
   picture: {
     type: String,
   },
+  isEmailVerified: {
+    type: Boolean,
+    default: false,
+  },
+  otp: {
+    type: String,
+  },
+  otpExpiry: {
+    type: Date,
+  },
   tokens: [{ token: String }],
 });
 

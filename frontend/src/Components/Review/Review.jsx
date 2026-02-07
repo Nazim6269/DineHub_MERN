@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { User, Star } from "lucide-react";
 
+const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:3333";
+
 const Review = ({ reviews = [], foodId }) => {
     const { profile } = useSelector((state) => state.profileReducer);
     const [comment, setComment] = useState("");
@@ -19,7 +21,7 @@ const Review = ({ reviews = [], foodId }) => {
         }
 
         try {
-            const res = await fetch(`http://localhost:3333/food/${foodId}/review`, {
+            const res = await fetch(`${SERVER_URL}/food/${foodId}/review`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

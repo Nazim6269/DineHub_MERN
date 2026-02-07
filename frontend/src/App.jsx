@@ -17,6 +17,7 @@ import SignupForm from "./Components/signup/SignupForm";
 import SingleCategory from "./Components/SingleCategory/SingleCategory";
 import AdminLayout from "./layout/AdminLayout";
 import MainLayout from "./layout/MainLayout";
+import TopLoader from "./Components/TopLoader/TopLoader";
 import store from "./redux/store";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -38,6 +39,7 @@ function App() {
             <QueryClientProvider client={queryClient}>
                 <ToastContainer />
                 <BrowserRouter>
+                    <TopLoader />
                     <Routes>
                         {/* PUBLIC */}
                         <Route path="/login" element={<LoginForm />} />

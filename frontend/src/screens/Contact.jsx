@@ -3,6 +3,8 @@ import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const SERVER_URL = import.meta.env.VITE_SERVER_URL || "http://localhost:3333";
+
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: "",
@@ -14,7 +16,7 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await fetch("http://localhost:3333/api/contact/submit", {
+            const res = await fetch(`${SERVER_URL}/api/contact/submit`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -32,13 +32,13 @@ const initialState = {
 export const fetchReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case FETCH_START:
-            return { isLoading: true };
+            return { ...state, isLoading: true, isError: null };
 
         case FETCH_SUCCESS:
-            return { ...state, isLoading: false, data: payload.payload[1] };
+            return { ...state, isLoading: false, isError: null, data: payload.payload[1] };
 
         case FETCH_FAILED:
-            return { isLoading: false, isError: true };
+            return { ...state, isLoading: false, isError: true, data: null };
         default:
             return state;
     }
